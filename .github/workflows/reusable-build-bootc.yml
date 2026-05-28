@@ -197,7 +197,7 @@ jobs:
         id: determine-if-need-for-build
         run: |
           source venv/bin/activate
-          bst artifact show ${{ inputs.element }} | grep "available" && echo "run-build=false" || true >> $GITHUB_OUTPUT
+          bst artifact show ${{ inputs.element }} | grep "available" && echo "run-build='false'" || true >> $GITHUB_OUTPUT
 
       # This generates a timestamp like what is defined on the ArtifactHub documentation
       # E.G: 2022-02-08T15:38:15Z'
