@@ -3,8 +3,12 @@ kind: manual
 sources:
 - kind: git_repo
   url: github:niri-wm/niri.git
-  track: main
-  ref: v26.04-31-g6f1a2c5f0e8274223d4204b1f8d6f7f91538967e
+  track: v*
+  exclude:
+  - "*-beta*"
+  - "*-rc*"
+  - "*-alpha*"
+  ref: v26.04-0-g8ed0da44d974c32c6877d2f4630c314da0717ecb
 - kind: cargo2
   url: crates:crates
   git-mirrors:
