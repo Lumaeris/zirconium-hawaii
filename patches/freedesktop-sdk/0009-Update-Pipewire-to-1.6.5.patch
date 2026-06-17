@@ -1,7 +1,7 @@
-From 93657e4a9eb97bd9a76c2efec2cd7b0d941ecc4f Mon Sep 17 00:00:00 2001
+From 714aaa86d4174a534711be44643173caed1ff231 Mon Sep 17 00:00:00 2001
 From: Jordan Petridis <jpetridis@gnome.org>
 Date: Thu, 21 May 2026 23:30:12 +0300
-Subject: [PATCH 9/9] Update Pipewire to 1.6.5
+Subject: [PATCH 09/12] Update Pipewire to 1.6.5
 
 ---
  elements/components/pipewire-base.bst | 3 ++-
@@ -11,14 +11,7 @@ diff --git a/elements/components/pipewire-base.bst b/elements/components/pipewir
 index a38e15d02..e5b14429c 100644
 --- a/elements/components/pipewire-base.bst
 +++ b/elements/components/pipewire-base.bst
-@@ -139,11 +139,12 @@ public:
-       - '%{debugdir}%{libdir}/pipewire-0.3/libpipewire-module-spa-node-factory.so.debug'
-       - '%{debugdir}%{libdir}/pipewire-0.3/libpipewire-module-spa-node.so.debug'
-       - '%{debugdir}%{libdir}/pipewire-0.3/libpipewire-module-zeroconf-discover.so.debug'
- 
-   cpe:
-     product: pipewire
- 
+@@ -146,4 +146,5 @@ public:
  sources:
  - kind: git_repo
    url: freedesktop:PipeWire/pipewire.git

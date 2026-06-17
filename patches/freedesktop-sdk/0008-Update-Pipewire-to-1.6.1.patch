@@ -1,7 +1,7 @@
-From 776fb10df9928814588584b8c0befe718f95374a Mon Sep 17 00:00:00 2001
+From f2bae40f9230ce70bc818208a2bd323142ae7290 Mon Sep 17 00:00:00 2001
 From: Valentin David <me@valentindavid.com>
 Date: Fri, 17 Apr 2026 10:46:15 +0100
-Subject: [PATCH 8/9] Update Pipewire to 1.6.1
+Subject: [PATCH 08/12] Update Pipewire to 1.6.1
 
 ---
  elements/components/pipewire-base.bst | 2 +-
@@ -11,14 +11,7 @@ diff --git a/elements/components/pipewire-base.bst b/elements/components/pipewir
 index f73a623c9..a38e15d02 100644
 --- a/elements/components/pipewire-base.bst
 +++ b/elements/components/pipewire-base.bst
-@@ -139,11 +139,11 @@ public:
-       - '%{debugdir}%{libdir}/pipewire-0.3/libpipewire-module-spa-node-factory.so.debug'
-       - '%{debugdir}%{libdir}/pipewire-0.3/libpipewire-module-spa-node.so.debug'
-       - '%{debugdir}%{libdir}/pipewire-0.3/libpipewire-module-zeroconf-discover.so.debug'
- 
-   cpe:
-     product: pipewire
- 
+@@ -146,4 +146,4 @@ public:
  sources:
  - kind: git_repo
    url: freedesktop:PipeWire/pipewire.git
