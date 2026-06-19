@@ -1,7 +1,7 @@
-From 3cb03af171c6740b9ba8e43372519adbce457392 Mon Sep 17 00:00:00 2001
+From b4bbbe39fcd46540115b3fbca58211a601e76b04 Mon Sep 17 00:00:00 2001
 From: Hec <hec@heccraft.com>
 Date: Thu, 28 May 2026 01:06:58 -0400
-Subject: [PATCH 11/12] vulkan-tools: build without /app prefix
+Subject: [PATCH 09/10] vulkan-tools: build without /app prefix
 
 ---
  elements/extensions/vulkaninfo/vulkan-tools.bst | 1 -
