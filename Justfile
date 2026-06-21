@@ -34,7 +34,8 @@ generate-keys $vendor=vendor:
     done
     cp files/boot-keys/linux-module-cert.crt files/boot-keys/modules/linux-module-cert.crt
 
-generate-image-version:
+[ arg ("branch", long="branch", short="b") ]
+generate-image-version branch="25.08":
     #!/usr/bin/env bash
     set -xeu
 
@@ -42,10 +43,13 @@ generate-image-version:
     IMAGE_VERSION=$(git log -1 --format=%cd --date=format:%Y%m%d%H%M)
     # git command prints the current commit hash
     COMMIT=$(git rev-parse HEAD)
+    # CI will change this depending on whether stable or another branch
+    BRANCH={{branch}}
 
     cat > include/image-version.yml <<EOF
-    image-version: '%{branch}.${IMAGE_VERSION}'
+    branch: '${BRANCH}'
     commit: '${COMMIT}'
+    image-version: '%{branch}.${IMAGE_VERSION}'
     EOF
 
 build *ARGS:

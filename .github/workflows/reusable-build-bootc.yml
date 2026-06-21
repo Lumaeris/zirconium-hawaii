@@ -61,7 +61,11 @@ jobs:
 
       - name: Set Image version
         run: |
-          just generate-image-version
+          if [ "${{ github.ref_name }}" == stable ]; then
+            just generate-image-version
+          else
+            just generate-image-version --branch "${{ github.ref_name }}"
+          fi
 
       - name: Configure BuildStream (no push)
         run: |

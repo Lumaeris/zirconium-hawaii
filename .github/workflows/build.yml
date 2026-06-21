@@ -2,10 +2,13 @@ name: Build container image
 
 on:
   push:
-    branches: [stable]
+    branches:
+      - stable
+      - testing
     paths-ignore: ["**/README.md"]
   pull_request:
-    branches: [stable]
+    branches:
+      - testing
   workflow_dispatch:
     inputs:
       force-rebuild:
