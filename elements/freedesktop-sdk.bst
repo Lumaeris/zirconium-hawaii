@@ -4,7 +4,7 @@ sources:
 - kind: git_repo
   url: gitlab:freedesktop-sdk/freedesktop-sdk.git
   track: freedesktop-sdk-25.08*
-  ref: freedesktop-sdk-25.08.12-0-gbb510d9021f4def1a60f032bef1e0ca660b8ec3a
+  ref: freedesktop-sdk-25.08.13-0-g8446990f0a549bb1f3ceb654af64fc176b274488
 - kind: patch_queue
   path: patches/freedesktop-sdk
 
@@ -33,7 +33,6 @@ config:
     components/python3-gi-docgen.bst: gnome-build-meta.bst:sdk/gi-docgen.bst
     components/graphene.bst: gnome-build-meta.bst:sdk/graphene.bst
     components/gsettings-desktop-schemas.bst: gnome-build-meta.bst:sdk/gsettings-desktop-schemas.bst
-    components/gtk-doc.bst: gnome-build-meta.bst:sdk/gtk-doc.bst
     components/gtk3.bst: gnome-build-meta.bst:sdk/gtk+-3.bst
     components/libibus.bst: gnome-build-meta.bst:sdk/libibus.bst
     components/json-glib.bst: gnome-build-meta.bst:sdk/json-glib.bst

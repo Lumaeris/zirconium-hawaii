@@ -7,11 +7,6 @@ on:
         description: "The name of the image to build"
         required: true
         type: string
-      default-tag:
-        description: "Default tag to push to"
-        required: false
-        type: string
-        default: "latest"
       publish:
         description: "Publish this image"
         required: false
@@ -40,7 +35,6 @@ env:
   IMAGE_LOGO_URL: "https://avatars.githubusercontent.com/u/237492973?s=400&v=4"
   IMAGE_NAME: "${{ inputs.image-name }}"
   IMAGE_REGISTRY: "ghcr.io/${{ github.repository_owner }}"
-  DEFAULT_TAG: "${{ inputs.default-tag }}"
 
 jobs:
   build:
@@ -61,7 +55,11 @@ jobs:
 
       - name: Set Image version
         run: |
-          just generate-image-version
+          if [ "${{ github.ref_name }}" == stable ]; then
+            just generate-image-version
+          else
+            just generate-image-version --branch "${{ github.ref_name }}"
+          fi
 
       - name: Configure BuildStream (no push)
         run: |
@@ -215,7 +213,7 @@ jobs:
           version="$(yq .image-version include/image-version.yml)"
 
           echo "version=${version#*$'.'}" >> "${GITHUB_OUTPUT}"
-          echo "branch=$(yq .variables.branch project.conf)" >> "${GITHUB_OUTPUT}"
+          echo "branch=$(yq .branch include/image-version.yml)" >> "${GITHUB_OUTPUT}"
 
       - name: Image Metadata
         if: steps.determine-if-need-for-build.outputs.run-build != 'false'
@@ -223,12 +221,12 @@ jobs:
         id: metadata
         with:
           tags: |
-            type=raw,value=${{ env.DEFAULT_TAG }},enable=${{ env.DEFAULT_TAG == 'latest' }}
+            type=raw,value=latest,enable=${{ github.ref_name == 'stable' }}
             type=raw,value=${{ steps.bstmetadata.outputs.branch }}
-            type=raw,value=stable
-            type=raw,value=${{ env.DEFAULT_TAG }}.${{ steps.bstmetadata.outputs.version }},enable=${{ env.DEFAULT_TAG == 'latest' }}
+            type=raw,value=${{ github.ref_name }}
+            type=raw,value=latest.${{ steps.bstmetadata.outputs.version }},enable=${{ github.ref_name == 'stable' }}
             type=raw,value=${{ steps.bstmetadata.outputs.branch }}.${{ steps.bstmetadata.outputs.version }}
-            type=raw,value=stable.${{ steps.bstmetadata.outputs.version }}
+            type=raw,value=${{ github.ref_name }}.${{ steps.bstmetadata.outputs.version }}
             type=ref,event=pr
             type=sha,enable=${{ github.event_name == 'pull_request' }}
           labels: |

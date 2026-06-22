@@ -1,7 +1,7 @@
-From a34ad96545a2d81dc821091703b06a74b51197fe Mon Sep 17 00:00:00 2001
+From d9025e55302e4f918d228b8d62db8c4c2a0be4a2 Mon Sep 17 00:00:00 2001
 From: Hec <hec@heccraft.com>
 Date: Sat, 13 Jun 2026 11:40:12 -0400
-Subject: [PATCH 12/12] Update extra-cmake-modules to v6.27.0
+Subject: [PATCH 10/10] Update extra-cmake-modules to v6.27.0
 
 ---
  elements/components/extra-cmake-modules.bst | 2 +-

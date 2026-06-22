@@ -1,7 +1,7 @@
-From 5438b607385d372fd543bc20665be7f5d3a7c2bc Mon Sep 17 00:00:00 2001
+From 4fadf182be08ed32b184c0509ca4fd5932f3855c Mon Sep 17 00:00:00 2001
 From: Jordan Petridis <jpetridis@gnome.org>
 Date: Mon, 18 Aug 2025 01:06:36 +0100
-Subject: [PATCH 01/12] project: Specify more limits to the CAS configs
+Subject: [PATCH 01/10] project: Specify more limits to the CAS configs
 
 These are disabled by default due to backward compatibility
 so we need to explicitly set some values for timeouts and

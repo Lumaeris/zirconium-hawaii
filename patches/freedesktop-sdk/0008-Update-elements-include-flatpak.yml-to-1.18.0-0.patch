@@ -1,7 +1,7 @@
-From 9e857b6a0a84cd0e462f7f48b05f048b48a4dc50 Mon Sep 17 00:00:00 2001
+From 0337a2dd4a7f8394189f816df94e0f3219aaeeca Mon Sep 17 00:00:00 2001
 From: Tom Pollard <tom.pollard@codethink.co.uk>
 Date: Fri, 12 Jun 2026 12:55:00 +0100
-Subject: [PATCH 10/12] Update elements/include/flatpak.yml to 1.18.0-0
+Subject: [PATCH 08/10] Update elements/include/flatpak.yml to 1.18.0-0
 
 Updates elements/include/flatpak.yml to 1.18.0-0 (5de2b58)
 Previous version was 1.16.6-0 (e761a88)
