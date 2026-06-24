@@ -4,6 +4,7 @@ depends:
   - stacks/jackrabbit.bst
   - gamerslop/linux-ogc.bst
   - gamerslop/initramfs.bst
+  - gamerslop/valve-hw-audio.bst
   - gamerslop/xonedo-dkms.bst
   - gamerslop/xonedo-firmware.bst
 
