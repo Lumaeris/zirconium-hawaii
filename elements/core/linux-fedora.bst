@@ -46,9 +46,6 @@ build-depends:
 - freedesktop-sdk.bst:components/zstd.bst
 - deps/rpm-tools.bst
 
-depends:
-- freedesktop-sdk.bst:public-stacks/runtime-minimal.bst
-
 config:
   build-commands:
   - |

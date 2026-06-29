@@ -18,7 +18,6 @@ sources:
     path: files/dankmaterialshell
 
 build-depends:
-- freedesktop-sdk.bst:public-stacks/runtime-minimal.bst
 - freedesktop-sdk.bst:public-stacks/buildsystem-make.bst
 - freedesktop-sdk.bst:components/git.bst
 - deps/go-1.26.bst
