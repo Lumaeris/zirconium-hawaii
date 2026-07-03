@@ -12,6 +12,6 @@ build-depends:
 
 depends:
 - freedesktop-sdk.bst:components/libfido2.bst
-- freedesktop-sdk.bst:components/_private/systemd-stage1.bst # Depends on udev
+- freedesktop-sdk.bst:components/systemd-stage1.bst # Depends on udev
 - freedesktop-sdk.bst:components/linux-pam.bst
 - freedesktop-sdk.bst:components/openssl.bst
