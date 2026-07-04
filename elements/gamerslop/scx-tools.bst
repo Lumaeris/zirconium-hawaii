@@ -6,7 +6,6 @@ sources:
   track: v*
   ref: v1.1.2-0-gcb98827b9864eec956c48ad51399e8bbb7618e1d
 - kind: cargo2
-  url: crates:crates
   ref:
   - kind: registry
     name: anstream
