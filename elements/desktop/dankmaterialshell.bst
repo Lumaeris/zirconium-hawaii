@@ -13,12 +13,11 @@ sources:
   - kind: git_repo
     url: github:AvengeMedia/DankMaterialShell.git
     track: master
-    ref: v1.4.0-723-g2fc3b8ee4ab166e61582da09272f79bff2fd9f97
+    ref: v1.4.0-759-g57d08f6b3b033eb0c022f3b601d32b2ee68ad7ad
   - kind: local
     path: files/dankmaterialshell
 
 build-depends:
-- freedesktop-sdk.bst:public-stacks/runtime-minimal.bst
 - freedesktop-sdk.bst:public-stacks/buildsystem-make.bst
 - freedesktop-sdk.bst:components/git.bst
 - deps/go-1.26.bst

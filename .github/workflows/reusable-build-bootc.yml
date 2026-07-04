@@ -48,7 +48,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
 
       - name: Setup Just
         uses: extractions/setup-just@53165ef7e734c5c07cb06b3c8e7b647c5aa16db3 # v4
@@ -61,27 +61,7 @@ jobs:
             just generate-image-version --branch "${{ github.ref_name }}"
           fi
 
-      - name: Configure BuildStream (no push)
-        run: |
-          mkdir -p ~/.config
-          cat > ~/.config/buildstream.conf << EOF
-          # BuildStream user configuration
-          scheduler:
-            fetchers: 24
-            builders: 4
-            network-retries: 3
-
-          logging:
-            verbose: true
-            message-format: '[%{wallclock}][%{elapsed}][%{key}][%{element}] %{action} %{message}'
-            error-lines: 80
-
-          build:
-            retry-failed: true
-          EOF
-
-      - name: Configure BuildStream to push to artifact servers
-        if: inputs.publish
+      - name: Configure BuildStream
         env:
           CASD_CLIENT_CERT: ${{ vars.CASD_CLIENT_CERT }}
           CASD_CLIENT_KEY: ${{ secrets.CASD_CLIENT_KEY }}
@@ -107,7 +87,7 @@ jobs:
             error-lines: 80
 
           build:
-            max-jobs: 32
+            # max-jobs: 32
             retry-failed: true
 
           artifacts:
@@ -136,41 +116,56 @@ jobs:
                 client-key: ~/.config/hawaii/client.key
                 client-cert: ~/.config/hawaii/client.crt
 
-          cache:
-            storage-service:
-              url: https://cache.projectbluefin.io:11002
-              connection-config:
-                keepalive-time: 60
-                retry-limit: 5
-                retry-delay: 1000
-                request-timeout: 180
-              auth:
-                client-key: ~/.config/hawaii/client.key
-                client-cert: ~/.config/hawaii/client.crt
+          # cache:
+          #   storage-service:
+          #     url: https://cache.projectbluefin.io:11002
+          #     connection-config:
+          #       keepalive-time: 60
+          #       retry-limit: 5
+          #       retry-delay: 1000
+          #       request-timeout: 180
+          #     auth:
+          #       client-key: ~/.config/hawaii/client.key
+          #       client-cert: ~/.config/hawaii/client.crt
 
-          remote-execution:
-            execution-service:
-              url: https://cache.projectbluefin.io:11002
-              connection-config:
-                keepalive-time: 60
-                retry-limit: 5
-                retry-delay: 1000
-                request-timeout: 180
-              auth:
-                client-key: ~/.config/hawaii/client.key
-                client-cert: ~/.config/hawaii/client.crt
-            action-cache-service:
-              url: https://cache.projectbluefin.io:11002
-              connection-config:
-                keepalive-time: 60
-                retry-limit: 5
-                retry-delay: 1000
-                request-timeout: 180
-              auth:
-                client-key: ~/.config/hawaii/client.key
-                client-cert: ~/.config/hawaii/client.crt
+          # remote-execution:
+          #   execution-service:
+          #     url: https://cache.projectbluefin.io:11002
+          #     connection-config:
+          #       keepalive-time: 60
+          #       retry-limit: 5
+          #       retry-delay: 1000
+          #       request-timeout: 180
+          #     auth:
+          #       client-key: ~/.config/hawaii/client.key
+          #       client-cert: ~/.config/hawaii/client.crt
+          #   action-cache-service:
+          #     url: https://cache.projectbluefin.io:11002
+          #     connection-config:
+          #       keepalive-time: 60
+          #       retry-limit: 5
+          #       retry-delay: 1000
+          #       request-timeout: 180
+          #     auth:
+          #       client-key: ~/.config/hawaii/client.key
+          #       client-cert: ~/.config/hawaii/client.crt
           EOF
+          else
+          cat > ~/.config/buildstream.conf << EOF
+          # BuildStream user configuration
+          scheduler:
+            fetchers: 24
+            builders: 4
+            network-retries: 3
 
+          logging:
+            verbose: true
+            message-format: '[%{wallclock}][%{elapsed}][%{key}][%{element}] %{action} %{message}'
+            error-lines: 80
+
+          build:
+            retry-failed: true
+          EOF
           fi
 
       - name: Print BuildStream configuration
@@ -217,7 +212,7 @@ jobs:
 
       - name: Image Metadata
         if: steps.determine-if-need-for-build.outputs.run-build != 'false'
-        uses: docker/metadata-action@c299e40c65443455700f0fdfc63efafe5b349051 # v5
+        uses: docker/metadata-action@80c7e94dd9b9319bd5eb7a0e0fe9291e23a2a2e9 # v6.1.0
         id: metadata
         with:
           tags: |
@@ -250,7 +245,7 @@ jobs:
 
       - name: Free disk space
         if: steps.determine-if-need-for-build.outputs.run-build != 'false'
-        uses: hastd/free-disk-space@78ec0490f953d89f024c95d0c293e6307ceac02e # v0.1.1
+        uses: hastd/free-disk-space@68572aeaadb7f76bd408246328e95926323402b5 # v0.1.2
 
       - name: Enable unprivileged userns
         if: steps.determine-if-need-for-build.outputs.run-build != 'false'
@@ -385,7 +380,7 @@ jobs:
 
       - name: Install Cosign
         if: inputs.publish && steps.determine-if-need-for-build.outputs.run-build != 'false'
-        uses: sigstore/cosign-installer@faadad0cce49287aee09b3a48701e75088a2c6ad # v4.0.0
+        uses: sigstore/cosign-installer@6f9f17788090df1f26f669e9d70d6ae9567deba6 # v4.1.2
 
       - name: Sign Image
         if: inputs.publish && steps.determine-if-need-for-build.outputs.run-build != 'false'
