@@ -11,10 +11,6 @@ on:
       - testing
   workflow_dispatch:
     inputs:
-      force-rebuild:
-        description: Force rebuild of full image
-        default: false
-        type: boolean
       skip-base:
         description: Skip building Hawaii image
         default: false
@@ -50,7 +46,6 @@ jobs:
       image-name: "zirconium-hawaii"
       element: "oci/zirconium/stack.bst"
       image-element: "oci/zirconium/image.bst"
-      force-rebuild: ${{ github.event.inputs.force-rebuild }}
       publish: ${{ github.event_name != 'pull_request' && ( github.ref == format('refs/heads/stable', github.event.repository.default_branch) || github.ref == format('refs/heads/testing', github.event.repository.default_branch) ) }}
 
   # Run this build AFTER build-hawaii. build-hawaii will cache all of the base packages.
@@ -70,5 +65,4 @@ jobs:
       image-name: "zirconium-hawaii-jackrabbit"
       element: "oci/jackrabbit/stack.bst"
       image-element: "oci/jackrabbit/image.bst"
-      force-rebuild: ${{ github.event.inputs.force-rebuild }}
       publish: ${{ github.event_name != 'pull_request' && ( github.ref == format('refs/heads/stable', github.event.repository.default_branch) || github.ref == format('refs/heads/testing', github.event.repository.default_branch) ) }}
