@@ -5,7 +5,6 @@ build-depends:
   - freedesktop-sdk.bst:public-stacks/buildsystem-make.bst
   - gamerslop/linux-ogc.bst
   - gamerslop/xonedo.bst
-  - stacks/zirconium.bst
 
 config:
   commands:
