@@ -159,6 +159,7 @@ jobs:
                 client-key: ~/.config/hawaii/client.key
                 client-cert: ~/.config/hawaii/client.crt
           build:
+            max-jobs: 12
             retry-failed: true
           EOF
 
@@ -166,7 +167,6 @@ jobs:
 
           cat >> ~/.config/buildstream.conf << EOF
           build:
-            max-jobs: 12
             retry-failed: true
           EOF
           fi
