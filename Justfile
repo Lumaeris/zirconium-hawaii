@@ -1,22 +1,45 @@
 default:
-    @just --choose
+    @just --list
 
 image_name := env("BUILD_IMAGE_NAME", "zirconium-hawaii")
 image_tag := env("BUILD_IMAGE_TAG", "latest")
 base_dir := env("BUILD_BASE_DIR", ".")
 filesystem := env("BUILD_FILESYSTEM", "btrfs")
 vendor := "Zirconium"
-bst_image := env("BST_IMAGE", "registry.gitlab.com/freedesktop-sdk/infrastructure/freedesktop-sdk-docker-images/bst2:latest")
+bst_image := env("BST_IMAGE", "registry.gitlab.com/freedesktop-sdk/infrastructure/freedesktop-sdk-docker-images/bst2:5fbedf796756d6922e26d98592973615f0d18e6f")
 
 bst *ARGS:
     #!/usr/bin/env bash
     set -xeuo pipefail
 
     mkdir -p "$HOME/.cache/buildstream"
+    mkdir -p "$HOME/.config/hawaii"
+    touch "$HOME/.config/buildstream.conf"
     podman run --rm \
         --privileged \
         --device /dev/fuse \
+        --network=host \
         -v "{{base_dir}}":/pwd \
+        -v "$HOME/.config/buildstream.conf:/root/.config/buildstream.conf" \
+        -v "$HOME/.config/hawaii:/root/.config/hawaii" \
+        -v "$HOME/.cache/buildstream:/root/.cache/buildstream:rw" \
+        -w /pwd \
+        "{{bst_image}}" bash -c 'bst --colors {{ARGS}}'
+
+bst-interactive *ARGS:
+    #!/usr/bin/env bash
+    set -xeuo pipefail
+
+    mkdir -p "$HOME/.cache/buildstream"
+    mkdir -p "$HOME/.config/hawaii"
+    touch "$HOME/.config/buildstream.conf"
+    podman run --rm -it \
+        --privileged \
+        --device /dev/fuse \
+        --network=host \
+        -v "{{base_dir}}":/pwd \
+        -v "$HOME/.config/buildstream.conf:/root/.config/buildstream.conf" \
+        -v "$HOME/.config/hawaii:/root/.config/hawaii" \
         -v "$HOME/.cache/buildstream:/root/.cache/buildstream:rw" \
         -w /pwd \
         "{{bst_image}}" bash -c 'bst --colors {{ARGS}}'
@@ -52,23 +75,16 @@ generate-image-version branch="25.08":
     image-version: '%{branch}.${IMAGE_VERSION}'
     EOF
 
-build *ARGS:
-    #!/usr/bin/env bash
-    set -eu
-
-    bst build oci/zirconium/image.bst
-    bst artifact checkout --tar - oci/zirconium/image.bst | pkexec podman load
-
 checkout-container $element="oci/zirconium/image.bst" $file="oci.tar":
     #!/usr/bin/env bash
     set -x
-    bst artifact checkout --tar ${file} ${element}
+    just bst artifact checkout --tar ${file} ${element}
 
 build-containerfile $image_name=image_name $image_tag=image_tag:
-    sudo podman build --squash-all -t "${image_name}:${image_tag}" .
+    podman build --squash-all -t "${image_name}:${image_tag}" .
 
 bootc *ARGS:
-    sudo podman run \
+    podman run \
         --rm --privileged --pid=host \
         -it \
         -v /var/lib/containers:/var/lib/containers \

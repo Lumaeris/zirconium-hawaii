@@ -12,8 +12,8 @@ sources:
   (>):
   - kind: git_repo
     url: github:AvengeMedia/DankMaterialShell.git
-    track: master
-    ref: v1.4.0-759-g57d08f6b3b033eb0c022f3b601d32b2ee68ad7ad
+    track: 'v*.*.*'
+    ref: v1.5.0-0-gbdfd565b72cbb416441a9ab828efcac4fd516c70
   - kind: local
     path: files/dankmaterialshell
 
@@ -24,17 +24,21 @@ build-depends:
 
 depends:
 - freedesktop-sdk.bst:public-stacks/runtime-minimal.bst
+- desktop/quickshell.bst
+- deps/qt6-qtmultimedia.bst
+
+runtime-depends:
+- cli/cava.bst
+- deps/dgop.bst
+- deps/kimageformats.bst
+- desktop/brightnessctl.bst
+- desktop/dankcalendar.bst
+- desktop/danksearch.bst
+- desktop/ddcutil.bst
+- desktop/matugen.bst
 - freedesktop-sdk.bst:components/libnotify.bst
 - gnome-build-meta.bst:core-deps/accountsservice.bst
 - gnome-build-meta.bst:core-deps/cups-pk-helper.bst
-- desktop/quickshell.bst
-- desktop/matugen.bst
-- desktop/ddcutil.bst
-- desktop/brightnessctl.bst
-- deps/qt6-qtmultimedia.bst
-- deps/kimageformats.bst
-- deps/dgop.bst
-- cli/cava.bst
 
 variables:
   make-args: build BUILD_TIME=2011-11-10_15:00:00

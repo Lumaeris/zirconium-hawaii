@@ -6,7 +6,6 @@ sources:
   track: v*
   ref: v1.10.2-0-g401dbd9ae2eca087a82b7c15c0379f878aea02da
 - kind: cargo2
-  url: crates:crates
   ref:
   - kind: registry
     name: aead
