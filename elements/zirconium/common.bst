@@ -41,6 +41,7 @@ config:
     install -Dm0644 mkosi.extra/usr/share/pki/containers/*.pub -t "%{install-root}%{datadir}/pki/containers"
     install -Dm0644 cosign.pub "%{install-root}%{datadir}/pki/containers/zirconium.pub"
     install -Dm0644 mkosi.extra/usr/share/factory/etc/profile.d/*.sh -t "%{install-root}%{sysconfdir}/profile.d"
+    install -Dm0644 mkosi.extra/usr/share/factory/etc/kmscon/kmscon.conf -t "%{install-root}%{sysconfdir}/kmscon"
     install -Dm0644 mkosi.extra/usr/share/xdg-terminal-exec/xdg-terminals.list -t "%{install-root}%{datadir}/xdg-terminal-exec"
     cp -r "mkosi.profiles/zirconium-bootc-ostree/mkosi.extra/usr/share/factory/etc/containers" "%{install-root}%{sysconfdir}/containers"
 
