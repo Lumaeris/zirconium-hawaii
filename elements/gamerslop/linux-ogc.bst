@@ -5,12 +5,12 @@ description: Linux kernel with patches from OpenGamingCollective applied
 sources:
 - kind: git_repo
   url: github:OpenGamingCollective/linux.git
-  track: "ogc-*"
+  track: "v*-ogc*"
   ref: v7.1.3-ogc3-0-g94276e0bdc0c5156c03bf44505b7fd5ae0b347b9
 - kind: git_repo
   directory: ogc-kernel-packages
   url: github:OpenGamingCollective/kernel-packages.git
-  track: "main"
+  track: "v*-ogc*"
   ref: v7.1.3-ogc3-0-g7c021da90cd14e3a0084b44ae5ad80aa06e5631d
 - kind: git_repo
   directory: archlinux-kernel-config
