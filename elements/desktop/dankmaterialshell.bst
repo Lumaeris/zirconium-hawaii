@@ -14,6 +14,8 @@ sources:
     url: github:AvengeMedia/DankMaterialShell.git
     track: 'v*.*.*'
     ref: v1.5.1-0-g6306bc7aa2cae7450ad0dc9fc9392ad61b860711
+  - kind: patch_queue
+    path: patches/dms
   - kind: local
     path: files/dankmaterialshell
 
