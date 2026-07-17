@@ -1,0 +1,28 @@
+From fa082e9b7949554aaf43ce24b291d398697ce69d Mon Sep 17 00:00:00 2001
+From: Hec <hec@heccraft.com>
+Date: Thu, 16 Jul 2026 18:48:35 -0400
+Subject: [PATCH] systemlogo: Add Zirconium
+
+Signed-off-by: Hec <hec@heccraft.com>
+---
+ quickshell/Widgets/SystemLogo.qml | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/quickshell/Widgets/SystemLogo.qml b/quickshell/Widgets/SystemLogo.qml
+index b107bdd0..a2523f68 100644
+--- a/quickshell/Widgets/SystemLogo.qml
++++ b/quickshell/Widgets/SystemLogo.qml
+@@ -70,6 +70,10 @@ Item {
+                     iconImage.source = "file:///run/current-system/profile/share/icons/hicolor/scalable/apps/guix-icon.svg"
+                     return
+                 }
++                if (logo === "zirconium") {
++                    iconImage.source = "file:///usr/share/zirconium/pixmaps/logo-z.svg"
++                    return
++                }
+                 iconImage.source = Quickshell.iconPath(logo, true)
+             }, 0)
+         }, 0)
+-- 
+2.55.0
+

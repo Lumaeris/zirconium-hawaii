@@ -1,23 +1,24 @@
 # Based off of freedesktop-sdk.bst:components/linux.bst
 kind: make
-description: Linux kernel with patches from OpenGamingCollective applied (gamerslop kernel)
+description: Linux kernel with patches from OpenGamingCollective applied
 
 sources:
 - kind: git_repo
   url: github:OpenGamingCollective/linux.git
   track: "v*-ogc*"
-  ref: v7.0.9-ogc3-0-gdcad54d2480699ac5515a7372a106224d9106acc
+  ref: v7.1.3-ogc3-0-g94276e0bdc0c5156c03bf44505b7fd5ae0b347b9
 - kind: git_repo
   directory: ogc-kernel-packages
   url: github:OpenGamingCollective/kernel-packages.git
   track: "v*-ogc*"
-  ref: v7.0.9-ogc3-0-ga3d9fc18d4ca707d80148301a12073ebca8c2858
+  ref: v7.1.3-ogc3-0-g7c021da90cd14e3a0084b44ae5ad80aa06e5631d
 - kind: git_repo
   directory: archlinux-kernel-config
   url: archlinux_gitlab:archlinux/packaging/packages/linux
+  # FIXME: eventually use our own config instead of pulling Arch Linux's config
   # manually update this track to the version of the linux kernel that ogc is using
-  track: 7.0.9.arch1*
-  ref: 7.0.9.arch1-1-0-g9dc647453e526bda4a145e7f33217ce9ad92e0b8
+  track: 7.1.3.arch1-1
+  ref: 7.1.3.arch1-1-0-g523a9a9ca99e503bc262df74e3c2b039ff9c522a
 - kind: local
   path: files/linux/config-utils.sh
 - kind: local
@@ -74,11 +75,16 @@ config:
   configure-commands:
   - |
     # Add the ogc version to the end of the kernel version
-    git_tag="$(git describe --tag)"
+    # If we're on a tagged release, remove .git and set the extra version to the tag.
+    # If you keep .git around, your kernel version will include the git hash at the end, which is ugly.
+    if git describe --tag 2>/dev/null | grep -e '-ogc[0-9]' &>/dev/null; then
+      git_tag="$(git describe --tag)"
+      rm -rf .git
+    else
+      git_tag="ogc"
+    fi
     extra_version="-${git_tag#*$"-"}"
-    sed -i "s/^EXTRAVERSION.*/EXTRAVERSION = ${extra_version}/" Makefile
-    # Remove the .git directory to get rid of the ugly commit hash at the end of the kernel version
-    rm -rf .git
+    echo "$extra_version" > localversion.10-ogc
 
   - |
     # put the variables that we need to unset into a file usable by fdSDK's config-utils.sh

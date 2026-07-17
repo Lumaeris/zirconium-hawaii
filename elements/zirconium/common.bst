@@ -11,7 +11,7 @@ sources:
 - kind: git_repo
   url: github:zirconium-dev/zirconium.git
   track: main
-  ref: e2a82869028669392e6716061a7a1f73a6006a10
+  ref: 363fcd0e08108d9d4378f4a5b10d2fb77532abf0
 
 depends:
 - freedesktop-sdk.bst:public-stacks/runtime-minimal.bst
@@ -40,7 +40,7 @@ config:
     install -Dm0644 cosign.pub "%{install-root}%{datadir}/pki/containers/zirconium.pub"
     install -Dm0644 mkosi.extra/usr/share/factory/etc/profile.d/*.sh -t "%{install-root}%{sysconfdir}/profile.d"
     install -Dm0644 mkosi.extra/usr/share/xdg-terminal-exec/xdg-terminals.list -t "%{install-root}%{datadir}/xdg-terminal-exec"
-    cp -r "mkosi.extra/usr/share/factory/etc/containers" "%{install-root}%{sysconfdir}/containers"
+    cp -r "mkosi.profiles/zirconium-bootc-ostree/mkosi.extra/usr/share/factory/etc/containers" "%{install-root}%{sysconfdir}/containers"
 
     # pam stuff
     install -Dm0644 mkosi.extra/usr/share/greetd/greetd-spawn.pam_env.conf -t "%{install-root}%{datadir}/greetd"
@@ -52,6 +52,9 @@ config:
     install -Dm0644 mkosi.extra/usr/lib/tmpfiles.d/99-dms-greeter.conf -t "%{install-root}%{indep-libdir}/tmpfiles.d"
 
     install -Dm0644 "mkosi.extra/usr/lib/systemd/system/flatpak-preinstall.service" -t "%{install-root}%{indep-libdir}/systemd/system"
+  - |
+    # FIXME: re-add when fcitx5 support is in Hawaii
+    rm -f "%{install-root}%{sysconfdir}/profile.d/fcitx5.sh"
   - |
     %{install-extra}
 
