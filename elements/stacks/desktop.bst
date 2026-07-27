@@ -14,8 +14,6 @@ depends:
   - desktop/iio-niri.bst
   - desktop/xdg-terminal-exec.bst
   - config/satty.bst
-  - config/greetd/service.bst
-  - config/greetd/dms.bst
   - config/default-icons/adwaita.bst
   - config/ld-config.bst
   - freedesktop-sdk.bst:components/desktop-file-utils.bst

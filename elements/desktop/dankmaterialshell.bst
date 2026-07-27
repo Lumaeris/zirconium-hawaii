@@ -69,5 +69,8 @@ config:
     # dms-greeter
     install -Dm0755 "quickshell/Modules/Greetd/assets/dms-greeter" -t "%{install-root}%{bindir}"
     install -Dm0644 "quickshell/systemd/tmpfiles-dms-greeter.conf" "%{install-root}%{indep-libdir}/tmpfiles.d/dms-greeter.conf"
+    install -Dm0644 "quickshell/systemd/sysusers-dms-greeter.conf" "%{install-root}%{indep-libdir}/sysusers.d/dms-greeter.conf"
+  - |
+    install -Dm0644 greetd.toml "%{install-root}%{sysconfdir}/greetd/config.toml"
   - |
     %{install-extra}
