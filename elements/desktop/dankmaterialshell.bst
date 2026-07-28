@@ -48,6 +48,13 @@ config:
     # Modify dms-greeter to use /usr/share/quickshell/dms instead of /usr/share/quickshell/dms-greeter, since we are not
     # going to install dms into /usr/share/quickshell/dms-greeter.
     sed -i 's/^DMS_PATH="dms-greeter"$/DMS_PATH="dms"/;s/default: dms-greeter)$/default: dms)/' quickshell/Modules/Greetd/assets/dms-greeter
+  build-commands:
+  - |
+    if git describe --tag --exact-match &>/dev/null; then
+      %{make} VERSION="$(git describe --tag)"
+    else
+      %{make}
+    fi
   install-commands:
   - |
     install -dm0755 "%{install-root}%{datadir}/bash-completion/completions"
