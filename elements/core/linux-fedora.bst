@@ -6,38 +6,38 @@ sources:
   (?):
   - arch == "aarch64":
       url: kojipkgs-fedora:packages/kernel/%{version}/%{pkgrelease}/aarch64/kernel-core-%{version}-%{pkgrelease}.aarch64.rpm
-      ref: 2adcbbd7a3b44e7635872ab9b35157f7ab37b70794eff598401b429312217fb2
+      ref: 61301afcb65266f13209f8ad61b5404ba428ecf63c07050002beb8bd648c9470
   - arch == "x86_64":
       url: kojipkgs-fedora:packages/kernel/%{version}/%{pkgrelease}/x86_64/kernel-core-%{version}-%{pkgrelease}.x86_64.rpm
-      ref: cf59d1c290f56473f13e63ccbfc473c34a83a40c33a0e4b082a898a92946af3b
+      ref: ddabf1c233818fbea094622daf1112c843b60456626f75daf4ead4c94b3d953d
 - kind: remote
   (?):
   - arch == "aarch64":
       url: kojipkgs-fedora:packages/kernel/%{version}/%{pkgrelease}/aarch64/kernel-modules-%{version}-%{pkgrelease}.aarch64.rpm
-      ref: 5a3cdb080c0343f69181aa4b07397f5e8ac600759895f440a8afae8b79694dee
+      ref: 28c43616a189af043c5bb475054d72bae2423a20f2be2f49dc6d21124ebef443
   - arch == "x86_64":
       url: kojipkgs-fedora:packages/kernel/%{version}/%{pkgrelease}/x86_64/kernel-modules-%{version}-%{pkgrelease}.x86_64.rpm
-      ref: 524baeb949549e2f23d264e278f60365e6df8230c1b243800212badea7a94cf1
+      ref: 4bcea236aa50189075a70653dfd65ce030d4ad43181bf5a367828b070ed5b5e8
 - kind: remote
   (?):
   - arch == "aarch64":
       url: kojipkgs-fedora:packages/kernel/%{version}/%{pkgrelease}/aarch64/kernel-modules-core-%{version}-%{pkgrelease}.aarch64.rpm
-      ref: 697cd6c81ebe91653878bcc55866a3a25ce1ce2cc2099977ea954489a2fdeb7e
+      ref: 86934bb8c395b413dffd46a6e1ac87fe2d18e45eb73bb117f1db4a97c9debe22
   - arch == "x86_64":
       url: kojipkgs-fedora:packages/kernel/%{version}/%{pkgrelease}/x86_64/kernel-modules-core-%{version}-%{pkgrelease}.x86_64.rpm
-      ref: 55fa9ef66535b4e73f01c0b777d9ad4f99e905eff5770643677a5311a7ee94d8
+      ref: be3d0dd57ac6d2b19777edcbdabd0e0a609d0327bb9701d20156f1b85d491d21
 - kind: remote
   (?):
   - arch == "aarch64":
       url: kojipkgs-fedora:packages/kernel/%{version}/%{pkgrelease}/aarch64/kernel-modules-extra-%{version}-%{pkgrelease}.aarch64.rpm
-      ref: b60d82721ed022915ee99de3ca387dbb253ed614855140c87e2492b6ed0df65b
+      ref: 2039c403a6517721ab4e76739fb79ee5374f5cbc0dc3702b24e2764108eaa303
   - arch == "x86_64":
       url: kojipkgs-fedora:packages/kernel/%{version}/%{pkgrelease}/x86_64/kernel-modules-extra-%{version}-%{pkgrelease}.x86_64.rpm
-      ref: 0ef84730c7b303061ac29c0b90abeb7aa3d14e6ef3b6938a7a70cc9dd589e7f4
+      ref: 526587f26b46eee6ae6d933897feb6c7f579794e87a293d9c42cdae4ff268a8e
 
 variables:
-  version: 7.1.4
-  pkgrelease: 204.fc44
+  version: 7.1.5
+  pkgrelease: 200.fc44
   strip-binaries: ""
 
 build-depends:
