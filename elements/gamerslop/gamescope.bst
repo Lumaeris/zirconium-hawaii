@@ -4,7 +4,7 @@ sources:
 - kind: git_repo
   url: github:OpenGamingCollective/gamescope.git
   track: ogc
-  ref: 3.16.19-106-g9b0214868571b4ae9cae2dab36e22fff4ee33674
+  ref: 3.16.19-128-g7282613d1e16be9b3b9446433932c1d91e7abca6
 # meson subprojects
 - kind: git_repo
   directory: subprojects/glm
@@ -15,24 +15,24 @@ sources:
   url: github:nothings/stb.git
   ref: 5736b15f7ea0ffb08dd38af21067c314d6a3aae9
 # git submodules
-- kind: git_repo
-  directory: subprojects/wlroots
-  url: github:Joshua-Ashton/wlroots.git
+- kind: git_module
+  path: subprojects/wlroots
+  url: freedesktop:wlroots/wlroots.git
   ref: 88a869855742281c98c22cab9641b317b8d065ef
-- kind: git_repo
-  directory: subprojects/libliftoff
+- kind: git_module
+  path: subprojects/libliftoff
   url: freedesktop:emersion/libliftoff.git
   ref: 8b08dc1c14fd019cc90ddabe34ad16596b0691f4
-- kind: git_repo
-  directory: subprojects/vkroots
+- kind: git_module
+  path: subprojects/vkroots
   url: github:Joshua-Ashton/vkroots
   ref: 5106d8a0df95de66cc58dc1ea37e69c99afc9540
-- kind: git_repo
-  directory: subprojects/openvr
+- kind: git_module
+  path: subprojects/openvr
   url: github:ValveSoftware/openvr.git
   ref: ff87f683f41fe26cc9353dd9d9d7028357fd8e1a
-- kind: git_repo
-  directory: src/reshade
+- kind: git_module
+  path: src/reshade
   url: github:Joshua-Ashton/reshade
   ref: 696b14cd6006ae9ca174e6164450619ace043283
 

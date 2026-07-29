@@ -251,15 +251,12 @@ sources:
     sha: bec47e5bfd1bff0eeaf6d8b485cc1074891a197ab4225d504cb7a1ab88b02bf0
 
 build-depends:
-- freedesktop-sdk.bst:components/stripper.bst
-- freedesktop-sdk.bst:components/make.bst
+- freedesktop-sdk.bst:public-stacks/buildsystem-make.bst
 - freedesktop-sdk.bst:components/scdoc.bst
 - freedesktop-sdk.bst:components/pkg-config.bst
 - freedesktop-sdk.bst:components/rust.bst
-- freedesktop-sdk.bst:components/gcc.bst
 
 depends:
-- freedesktop-sdk.bst:public-stacks/runtime-minimal.bst
 - freedesktop-sdk.bst:components/linux-pam.bst
 
 config:
@@ -269,13 +266,9 @@ config:
 
   install-commands:
   - |
-    # greetd itself
     make -C man DESTDIR="%{install-root}" PREFIX="%{prefix}" install
     install -Dm0755 target/release/greetd -t "%{install-root}%{bindir}"
     install -Dm0644 greetd.service -t "%{install-root}%{prefix}/lib/systemd/system"
     install -Dm0644 greetd.pam "%{install-root}%{sysconfdir}/pam.d/greetd"
-    install -Dm0644 greetd.sysusers "%{install-root}%{prefix}/lib/sysusers.d/greetd.conf"
-    # agreety
-    install -Dm0755 target/release/agreety -t "%{install-root}%{bindir}"
   - |
     %{install-extra}

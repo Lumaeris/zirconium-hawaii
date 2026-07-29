@@ -6,7 +6,7 @@ sources:
   track: "*.*.*"
   exclude:
   - "*.rc*"
-  ref: 1.4.1-0-g346cab89c19a3525718be8c5c65d700ab47b432e
+  ref: 1.4.4-0-gcf3d1b107147480c447ffbfb3f789dc74335074c
 - kind: cargo2
   ref:
   - kind: registry
@@ -222,7 +222,6 @@ depends:
 - freedesktop-sdk.bst:components/dbus.bst
 - freedesktop-sdk.bst:components/desktop-file-utils.bst
 - freedesktop-sdk.bst:components/diffutils.bst
-- freedesktop-sdk.bst:components/gcc.bst
 - freedesktop-sdk.bst:components/freetype.bst
 - freedesktop-sdk.bst:components/gdk-pixbuf.bst
 - freedesktop-sdk.bst:components/nss.bst

@@ -13,7 +13,7 @@ sources:
   - kind: git_repo
     url: github:AvengeMedia/DankMaterialShell.git
     track: 'v*.*.*'
-    ref: v1.5.2-0-g74896fb87cb9e4bb866dbabcfd754e3e649ad0c7
+    ref: v1.5.3-0-g069ddab041c738236a8910e4c39b65d9628d3018
   - kind: local
     path: files/dankmaterialshell
 
@@ -32,7 +32,6 @@ runtime-depends:
 - deps/dgop.bst
 - deps/kimageformats.bst
 - desktop/brightnessctl.bst
-- desktop/dankcalendar.bst
 - desktop/danksearch.bst
 - desktop/ddcutil.bst
 - desktop/matugen.bst
@@ -49,6 +48,13 @@ config:
     # Modify dms-greeter to use /usr/share/quickshell/dms instead of /usr/share/quickshell/dms-greeter, since we are not
     # going to install dms into /usr/share/quickshell/dms-greeter.
     sed -i 's/^DMS_PATH="dms-greeter"$/DMS_PATH="dms"/;s/default: dms-greeter)$/default: dms)/' quickshell/Modules/Greetd/assets/dms-greeter
+  build-commands:
+  - |
+    if git describe --tag --exact-match &>/dev/null; then
+      %{make} VERSION="$(git describe --tag)"
+    else
+      %{make}
+    fi
   install-commands:
   - |
     install -dm0755 "%{install-root}%{datadir}/bash-completion/completions"
@@ -69,5 +75,8 @@ config:
     # dms-greeter
     install -Dm0755 "quickshell/Modules/Greetd/assets/dms-greeter" -t "%{install-root}%{bindir}"
     install -Dm0644 "quickshell/systemd/tmpfiles-dms-greeter.conf" "%{install-root}%{indep-libdir}/tmpfiles.d/dms-greeter.conf"
+    install -Dm0644 "quickshell/systemd/sysusers-dms-greeter.conf" "%{install-root}%{indep-libdir}/sysusers.d/dms-greeter.conf"
+  - |
+    install -Dm0644 greetd.toml "%{install-root}%{sysconfdir}/greetd/config.toml"
   - |
     %{install-extra}
