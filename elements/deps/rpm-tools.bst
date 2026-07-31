@@ -8,7 +8,7 @@ sources:
   - "*-beta*"
   - "*-rc*"
   - "*-alpha*"
-  ref: rpm-6.0.1-release-0-g58a917a6c5e24e9e8a01976c17d2eee06249b9b6
+  ref: rpm-6.0.2-release-0-ga7f89afb57a98f6419d0eff35ca792198293b682
 
 build-depends:
 - freedesktop-sdk.bst:public-stacks/buildsystem-cmake.bst
