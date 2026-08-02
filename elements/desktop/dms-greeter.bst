@@ -24,7 +24,7 @@ sources:
 build-depends:
 - freedesktop-sdk.bst:public-stacks/buildsystem-make.bst
 - freedesktop-sdk.bst:components/git.bst
-- deps/go-1.26.bst
+- freedesktop-sdk.bst:components/go.bst
 - freedesktop-sdk.bst:components/tar.bst
 
 depends:
@@ -34,7 +34,7 @@ runtime-depends:
 - core/greetd.bst
 
 variables:
-  make-args: build BUILD_TIME=2011-11-10_15:00:00
+  make-args: build GOFLAGS="" BUILD_TIME=2011-11-10_15:00:00
 
 config:
   build-commands:

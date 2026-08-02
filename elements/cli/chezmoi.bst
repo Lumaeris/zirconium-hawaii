@@ -18,6 +18,9 @@ sources:
       url: github_files:twpayne/chezmoi/releases/download/v%{version}/chezmoi_%{version}_linux_amd64.apk
       ref: 47719461fd04743b24bb8b5c3fac3f8668848349a7cad8aabfce2bcbe7c1ff91
 
+build-depends:
+- freedesktop-sdk.bst:public-stacks/runtime-gnu.bst
+
 depends:
 - freedesktop-sdk.bst:public-stacks/runtime-minimal.bst
 

@@ -1668,6 +1668,7 @@ sources:
     version: 2.0.16+zstd.1.5.7
     sha: 91e19ebc2adc8f83e43039e79776e3fda8ca919132d68a1fed6a5faca2683748
 build-depends:
+- freedesktop-sdk.bst:public-stacks/buildsystem-make.bst
 - freedesktop-sdk.bst:components/go-md2man.bst
 - freedesktop-sdk.bst:components/openssl.bst
 - freedesktop-sdk.bst:components/pkg-config.bst
@@ -1675,7 +1676,6 @@ build-depends:
 - freedesktop-sdk.bst:components/systemd.bst
 - freedesktop-sdk.bst:components/zstd.bst
 - freedesktop-sdk.bst:components/gcc.bst
-- freedesktop-sdk.bst:public-stacks/buildsystem-make.bst
 
 depends:
 - freedesktop-sdk.bst:components/composefs.bst
@@ -1683,7 +1683,6 @@ depends:
 - freedesktop-sdk.bst:components/podman.bst
 - freedesktop-sdk.bst:components/skopeo.bst
 - freedesktop-sdk.bst:components/util-linux.bst
-- freedesktop-sdk.bst:public-stacks/runtime-minimal.bst
 
 variables:
   make-install-args: >-

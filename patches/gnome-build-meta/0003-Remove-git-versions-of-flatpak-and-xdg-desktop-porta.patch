@@ -1,0 +1,204 @@
+From 6ff72fe3d10f98858f652b85a152af11713b422c Mon Sep 17 00:00:00 2001
+From: Hec <hec@heccraft.com>
+Date: Thu, 3 Sep 2026 00:56:46 -0400
+Subject: [PATCH 3/4] Remove git versions of flatpak and xdg-desktop-portal
+
+We don't want this in a stable release :/
+
+Signed-off-by: Hec <hec@heccraft.com>
+---
+ elements/core-deps/flatpak.bst                | 51 ----------------
+ .../core-deps/xdg-desktop-portal-base.bst     | 58 -------------------
+ .../core-deps/xdg-desktop-portal-manifest.bst |  4 --
+ elements/core-deps/xdg-desktop-portal.bst     | 28 ---------
+ elements/freedesktop-sdk.bst                  |  5 --
+ 5 files changed, 146 deletions(-)
+ delete mode 100644 elements/core-deps/flatpak.bst
+ delete mode 100644 elements/core-deps/xdg-desktop-portal-base.bst
+ delete mode 100644 elements/core-deps/xdg-desktop-portal-manifest.bst
+ delete mode 100644 elements/core-deps/xdg-desktop-portal.bst
+
+diff --git a/elements/core-deps/flatpak.bst b/elements/core-deps/flatpak.bst
+deleted file mode 100644
+index cc6ce89ae..000000000
+--- a/elements/core-deps/flatpak.bst
++++ /dev/null
+@@ -1,51 +0,0 @@
+-kind: meson
+-
+-sources:
+-- kind: git_repo
+-  url: github:flatpak/flatpak.git
+-  (?):
+-  - channel == "nightly":
+-      track: main
+-  - channel == "stable":
+-      track: 1.[0-8][02468].*
+-  ref: 1.18.0-103-g0717cd168582473418300eee8baaae988e9c0579
+-
+-build-depends:
+-- (@): include/gcc-for-recc.yml
+-- buildsystems/meson.bst
+-- freedesktop-sdk.bst:components/bison.bst
+-- freedesktop-sdk.bst:components/docbook-xsl.bst
+-- freedesktop-sdk.bst:components/gettext.bst
+-- freedesktop-sdk.bst:components/gobject-introspection.bst
+-- freedesktop-sdk.bst:components/libxslt.bst
+-- freedesktop-sdk.bst:components/python3-pyparsing.bst
+-- freedesktop-sdk.bst:components/wayland-protocols.bst
+-- freedesktop-sdk.bst:components/xmlto.bst
+-
+-depends:
+-- freedesktop-sdk.bst:public-stacks/runtime-minimal.bst
+-- freedesktop-sdk.bst:components/bubblewrap.bst
+-- freedesktop-sdk.bst:components/gpgme.bst
+-- freedesktop-sdk.bst:components/libarchive.bst
+-- freedesktop-sdk.bst:components/libxml2.bst
+-- freedesktop-sdk.bst:components/curl.bst
+-- freedesktop-sdk.bst:components/xorg-lib-xau.bst
+-- freedesktop-sdk.bst:components/ostree.bst
+-- freedesktop-sdk.bst:components/fuse3.bst
+-- freedesktop-sdk.bst:components/json-glib.bst
+-- freedesktop-sdk.bst:components/appstream.bst
+-- freedesktop-sdk.bst:components/libseccomp.bst
+-- freedesktop-sdk.bst:components/polkit.bst
+-- freedesktop-sdk.bst:components/systemd-libs.bst
+-- freedesktop-sdk.bst:components/xdg-dbus-proxy.bst
+-
+-variables:
+-  meson-local: >-
+-    -Dgtkdoc=disabled
+-    -Dsystem_bubblewrap=bwrap
+-    -Ddconf=disabled
+-    -Dmalcontent=disabled
+-    -Dselinux_module=disabled
+-    -Dtests=false
+-    -Dsystem_dbus_proxy=xdg-dbus-proxy
+-
+diff --git a/elements/core-deps/xdg-desktop-portal-base.bst b/elements/core-deps/xdg-desktop-portal-base.bst
+deleted file mode 100644
+index ca71cb344..000000000
+--- a/elements/core-deps/xdg-desktop-portal-base.bst
++++ /dev/null
+@@ -1,58 +0,0 @@
+-kind: meson
+-
+-depends:
+-- freedesktop-sdk.bst:public-stacks/runtime-minimal.bst
+-
+-build-depends:
+-- (@): include/gcc-for-recc.yml
+-- buildsystems/meson.bst
+-- freedesktop-sdk.bst:components/flatpak-minimal.bst
+-- freedesktop-sdk.bst:components/fontconfig.bst
+-- freedesktop-sdk.bst:components/fuse3.bst
+-- freedesktop-sdk.bst:components/geoclue-libs.bst
+-- freedesktop-sdk.bst:components/glib.bst
+-- freedesktop-sdk.bst:components/libgudev.bst
+-- freedesktop-sdk.bst:components/pipewire.bst
+-- freedesktop-sdk.bst:components/wireplumber.bst
+-- sdk/libdex.bst
+-
+-variables:
+-  meson-local: >-
+-    -Dtests=disabled
+-    -Ddocumentation=disabled
+-    -Dman-pages=disabled
+-
+-public:
+-  bst:
+-    split-rules:
+-      interfaces:
+-      - "%{datadir}/pkgconfig/*.pc"
+-      - "%{datadir}/dbus-1/interfaces"
+-      - "%{datadir}/dbus-1/interfaces/org.freedesktop.portal*"
+-      xdp-license:
+-      - "%{project_licensedir}"
+-      - "%{project_licensedir}/**"
+-  cpe:
+-    product: xdg-desktop-portal
+-
+-sources:
+-- kind: git_repo
+-  url: github:flatpak/xdg-desktop-portal.git
+-  (?):
+-  - channel == "nightly":
+-      track: main
+-  - channel == "stable":
+-      track: 1.[0-8][02468].*
+-  ref: 1.22.0-86-g28e7697de1d112456bb5468c40ffd7b2541da020
+-- kind: git_repo
+-  url: gnome:libglnx.git
+-  directory: subprojects/libglnx
+-  # Meson wrap file
+-  # https://github.com/flatpak/xdg-desktop-portal/blob/main/subprojects/libglnx.wrap
+-  ref: ff64d52116ae74f0d25e24f089db28921ea171ff
+-- kind: git_repo
+-  url: gnome:gvdb.git
+-  directory: subprojects/gvdb
+-  # meson wrap file
+-  # https://github.com/flatpak/xdg-desktop-portal/blob/main/subprojects/gvdb.wrap
+-  ref: c6f2359cc1d00f16e0a0e2527fa0bc1882b8b5ab
+diff --git a/elements/core-deps/xdg-desktop-portal-manifest.bst b/elements/core-deps/xdg-desktop-portal-manifest.bst
+deleted file mode 100644
+index e60b51331..000000000
+--- a/elements/core-deps/xdg-desktop-portal-manifest.bst
++++ /dev/null
+@@ -1,4 +0,0 @@
+-kind: collect_manifest
+-
+-build-depends:
+-- freedesktop-sdk.bst:components/xdg-desktop-portal-base.bst
+diff --git a/elements/core-deps/xdg-desktop-portal.bst b/elements/core-deps/xdg-desktop-portal.bst
+deleted file mode 100644
+index 160d84293..000000000
+--- a/elements/core-deps/xdg-desktop-portal.bst
++++ /dev/null
+@@ -1,28 +0,0 @@
+-kind: filter
+-
+-build-depends:
+-- freedesktop-sdk.bst:components/_private/xdg-desktop-portal-base.bst
+-
+-runtime-depends:
+-- freedesktop-sdk.bst:components/flatpak.bst
+-- freedesktop-sdk.bst:components/fontconfig.bst
+-- freedesktop-sdk.bst:components/fuse3.bst
+-- freedesktop-sdk.bst:components/geoclue-libs.bst
+-- freedesktop-sdk.bst:components/glib.bst
+-- freedesktop-sdk.bst:components/pipewire-daemon.bst
+-- freedesktop-sdk.bst:components/wireplumber.bst
+-- freedesktop-sdk.bst:components/libgudev.bst
+-- freedesktop-sdk.bst:components/xdg-desktop-portal-manifest.bst
+-- freedesktop-sdk.bst:components/xdg-portal-interfaces.bst
+-- sdk/libdex.bst
+-
+-config:
+-  include-orphans: true
+-  exclude:
+-  - interfaces
+-
+-public:
+-  bst:
+-    overlap-whitelist:
+-    - "%{project_licensedir}/xdg-desktop-portal"
+-    - "%{project_licensedir}/xdg-desktop-portal/**"
+diff --git a/elements/freedesktop-sdk.bst b/elements/freedesktop-sdk.bst
+index 260720436..4771c0256 100644
+--- a/elements/freedesktop-sdk.bst
++++ b/elements/freedesktop-sdk.bst
+@@ -62,11 +62,6 @@ config:
+     components/systemd-ukify.bst: core-deps/systemd-ukify.bst
+     components/systemd-libs.bst: core-deps/systemd-libs.bst
+ 
+-    # swick has signed up for dealing with all the issues from building these from git
+-    components/_private/xdg-desktop-portal-base.bst: core-deps/xdg-desktop-portal-base.bst
+-    components/xdg-desktop-portal.bst: core-deps/xdg-desktop-portal.bst
+-    components/flatpak.bst: core-deps/flatpak.bst
+-
+     # gnome-calendar still requires libical 3.x. Nothing in the flatpak runtimes depends
+     # on it, so this can be reverted in a stable branch
+     components/libical.bst: core-deps/libical3.bst
+-- 
+2.55.0
+

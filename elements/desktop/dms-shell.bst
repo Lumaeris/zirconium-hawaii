@@ -24,11 +24,10 @@ sources:
 build-depends:
 - freedesktop-sdk.bst:public-stacks/buildsystem-make.bst
 - freedesktop-sdk.bst:components/git.bst
-- deps/go-1.26.bst
+- freedesktop-sdk.bst:components/go.bst
 - freedesktop-sdk.bst:components/tar.bst
 
 depends:
-- freedesktop-sdk.bst:public-stacks/runtime-minimal.bst
 - desktop/quickshell.bst
 - deps/qt6-qtmultimedia.bst
 
@@ -45,7 +44,7 @@ runtime-depends:
 - gnome-build-meta.bst:core-deps/cups-pk-helper.bst
 
 variables:
-  make-args: build BUILD_TIME=2011-11-10_15:00:00
+  make-args: build GOFLAGS="" BUILD_TIME=2011-11-10_15:00:00
 
 config:
   build-commands:

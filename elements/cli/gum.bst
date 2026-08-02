@@ -18,8 +18,8 @@ sources:
       url: github_files:charmbracelet/gum/releases/download/v%{version}/gum_%{version}_Linux_x86_64.tar.gz
       ref: c99b0005bb5b514770eea404b24c7987e08eba35bb0b2d7bc6545bb676c36861
 
-depends:
-- freedesktop-sdk.bst:public-stacks/runtime-minimal.bst
+build-depends:
+- freedesktop-sdk.bst:public-stacks/runtime-gnu.bst
 
 variables:
   version: 2.0.0
