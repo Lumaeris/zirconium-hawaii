@@ -23,6 +23,8 @@ sources:
   path: files/linux/config-utils.sh
 - kind: local
   path: files/linux/gamerslop-config.sh
+- kind: patch_queue
+  path: patches/linux-ogc
 
 build-depends:
 - freedesktop-sdk.bst:public-stacks/buildsystem-make.bst
