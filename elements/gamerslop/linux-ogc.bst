@@ -6,19 +6,19 @@ sources:
 - kind: git_repo
   url: github:OpenGamingCollective/linux.git
   track: "v*-ogc*"
-  ref: v7.1.6-ogc3-0-g66906e0cff38176e8ad0d7f5ba6864530e13b4ca
+  ref: v7.1.6-ogc4-0-g1c4bbc210501bc536aca25f6de07d42e2353ead7
 - kind: git_repo
   directory: ogc-kernel-packages
   url: github:OpenGamingCollective/kernel-packages.git
   track: "v*-ogc*"
-  ref: v7.1.6-ogc3-0-gaf20a87079754e20d54cee5866365b9ea89a6c6d
+  ref: v7.1.6-ogc4-0-gaf20a87079754e20d54cee5866365b9ea89a6c6d
 - kind: git_repo
   directory: archlinux-kernel-config
   url: archlinux_gitlab:archlinux/packaging/packages/linux
   # FIXME: eventually use our own config instead of pulling Arch Linux's config
   # manually update this track to the version of the linux kernel that ogc is using
-  track: 7.1.5.arch1-1
-  ref: 7.1.5.arch1-1-0-gc83efa616f4f36ccc3d5a84cc8d5b7a106d1e5fc
+  track: 7.1.6.arch1-1
+  ref: 7.1.6.arch1-1-0-g4e5ab35422bf83d7d3d8a88abc58e055a29e2043
 - kind: local
   path: files/linux/config-utils.sh
 - kind: local
