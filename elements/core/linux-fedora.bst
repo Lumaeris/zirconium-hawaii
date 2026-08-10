@@ -39,23 +39,17 @@ variables:
   version: 7.1.7
   pkgrelease: 200.fc44
   strip-binaries: ""
+  install-root: "%{build-root}"
 
 build-depends:
-- freedesktop-sdk.bst:components/cpio.bst
-- freedesktop-sdk.bst:components/xz.bst
-- freedesktop-sdk.bst:components/zstd.bst
-- deps/rpm-tools.bst
+- freedesktop-sdk.bst:components/bzip2.bst
+- freedesktop-sdk.bst:components/libarchive.bst
 
 config:
   build-commands:
   - |
     for f in *.rpm; do
-      rpm2cpio $f | cpio -idmv
+      bsdtar xvf $f
     done
     mv lib usr/
     rm *.rpm
-  install-commands:
-  - |
-    cp -ra . %{install-root}/
-  - |
-    %{install-extra}
