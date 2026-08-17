@@ -115,9 +115,10 @@ config:
   - |
     release=$(make -s kernelrelease)
     install -Dm644 "%{image-name}" "%{install-root}%{indep-libdir}/modules/${release}/vmlinuz"
+    install -Dm644 vmlinux "%{install-root}%{indep-libdir}/modules/${release}/vmlinux"
     install -Dm644 System.map "%{install-root}%{indep-libdir}/modules/${release}/System.map"
     install -Dm644 .config "%{install-root}%{indep-libdir}/modules/${release}/config"
-    ZSTD_CLEVEL=19 make INSTALL_MOD_PATH='%{install-root}%{prefix}' modules_install INSTALL_MOD_STRIP=1
+    ZSTD_CLEVEL=10 make INSTALL_MOD_PATH='%{install-root}%{prefix}' modules_install INSTALL_MOD_STRIP=1
 
   - |
     release=$(make -s kernelrelease)
@@ -155,14 +156,16 @@ config:
       install-commands:
         (>):
         - |
-          make -j1 INSTALL_DTBS_PATH='%{install-root}%{bootdir}/dtbs' dtbs_install
+          release=$(make -s kernelrelease)
+          make -j1 INSTALL_DTBS_PATH="%{install-root}%{indep-libdir}/modules/${release}/dtbs" dtbs_install
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-        - '%{bootdir}/System.map'
+        - '%{indep-libdir}/modules/*/System.map'
+        - '%{indep-libdir}/modules/*/vmlinux'
     overlap-whitelist:
     - "%{project_licensedir}"
     - "%{project_licensedir}/**"
