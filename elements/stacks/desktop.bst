@@ -5,7 +5,6 @@ depends:
   - desktop/quickshell.bst
   - desktop/dankmaterialshell.bst
   - desktop/foot.bst
-  - desktop/qt6ct.bst
   - desktop/satty.bst
   - desktop/brlaser.bst
   - cli/chezmoi.bst
