@@ -37,7 +37,7 @@ sources:
 
 variables:
   version: 7.1.9
-  pkgrelease: 200.fc44
+  pkgrelease: 100.fc43
   strip-binaries: ""
   install-root: "%{build-root}"
 
