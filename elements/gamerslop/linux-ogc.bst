@@ -91,6 +91,10 @@ config:
     echo "$extra_version" > localversion.10-ogc
 
   - |
+    # Don't set CONFIG_DEFAULT_SECURITY, we'll do that ourselves
+    sed -i '/^CONFIG_DEFAULT_SECURITY_/d' ogc-kernel-packages/config/*
+
+  - |
     # put the variables that we need to unset into a file usable by fdSDK's config-utils.sh
     for f in $(grep -Evh "^[[:blank:]]*#|^[[:blank:]]*$" ogc-kernel-packages/config/{ogc,arch}.config.unset); do
       echo remove $f >> ogc-config.sh
