@@ -21,12 +21,14 @@ sources:
   url: archlinux_gitlab:archlinux/packaging/packages/linux
   # FIXME: eventually use our own config instead of pulling Arch Linux's config
   # manually update this track to the version of the linux kernel that ogc is using
-  track: 7.1.8.arch1-1
-  ref: 7.1.8.arch1-1-0-gd65b837da2bc44bd4837d52464e80edfe36def28
+  track: 7.2.2.arch1-1
+  ref: 7.2.2.arch1-1-0-gb5e50358a428eeb8973ec16fb67284935f36b8e1
 - kind: local
   path: files/linux/config-utils.sh
 - kind: local
   path: files/linux/gamerslop-config.sh
+- kind: patch
+  path: patches/linux-ogc/0001-inet-frags-strip-GSO-state-from-fragments-before-rea.patch
 
 build-depends:
 - freedesktop-sdk.bst:public-stacks/buildsystem-make.bst
