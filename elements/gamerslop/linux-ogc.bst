@@ -8,14 +8,14 @@ sources:
   track: "v*-ogc*"
   exclude:
   - "*-rc*"
-  ref: v7.2.1-ogc3-0-gcd7f77866692d61d59a931c9a9fa706f2cb88535
+  ref: v7.2.1-ogc5-0-gc4b5b14a460d9ea1fc07515391e2e1bae940c25f
 - kind: git_repo
   directory: ogc-kernel-packages
   url: github:OpenGamingCollective/kernel-packages.git
   track: "v*-ogc*"
   exclude:
   - "*-rc*"
-  ref: v7.2.1-ogc3-0-g68c3daa93e4b1e41918001028d48b6b167ad0a80
+  ref: v7.2.1-ogc5-0-g5fc47f707b518566b41258942a0a5a7a04d532f7
 - kind: git_repo
   directory: archlinux-kernel-config
   url: archlinux_gitlab:archlinux/packaging/packages/linux
