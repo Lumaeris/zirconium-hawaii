@@ -27,8 +27,6 @@ sources:
   path: files/linux/config-utils.sh
 - kind: local
   path: files/linux/gamerslop-config.sh
-- kind: patch
-  path: patches/linux-ogc/0001-inet-frags-strip-GSO-state-from-fragments-before-rea.patch
 
 build-depends:
 - freedesktop-sdk.bst:public-stacks/buildsystem-make.bst
