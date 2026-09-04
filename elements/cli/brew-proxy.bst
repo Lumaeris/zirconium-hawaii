@@ -394,6 +394,9 @@ build-depends:
 - freedesktop-sdk.bst:public-stacks/buildsystem-meson.bst
 - freedesktop-sdk.bst:components/rust.bst
 
+depends:
+- freedesktop-sdk.bst:components/systemd.bst
+
 variables:
   meson-local: >-
     -Dselinux=disabled
