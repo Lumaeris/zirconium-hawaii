@@ -6,7 +6,7 @@ sandbox:
 
 # go modules are loaded here
 (@):
-- elements/include/dms.yml
+- elements/include/dms-shell.yml
 
 sources:
   (>):
@@ -15,7 +15,7 @@ sources:
     track: 'v*.*.*'
     ref: v1.5.3-0-g069ddab041c738236a8910e4c39b65d9628d3018
   - kind: local
-    path: files/dankmaterialshell
+    path: files/dms-shell
 
 build-depends:
 - freedesktop-sdk.bst:public-stacks/buildsystem-make.bst

@@ -3,7 +3,7 @@ kind: stack
 depends:
   - desktop/niri.bst
   - desktop/quickshell.bst
-  - desktop/dankmaterialshell.bst
+  - desktop/dms-shell.bst
   - desktop/foot.bst
   - desktop/satty.bst
   - desktop/brlaser.bst
