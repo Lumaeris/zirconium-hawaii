@@ -7,6 +7,7 @@ sources:
   ref: v1.16.10-0-g3e76c16556c55e6d15d31bd47602b231e2131cb2
   exclude:
   - v1.16.7
+  - v1.16.11
 - kind: local
   path: files/bootc
 - kind: cargo2
