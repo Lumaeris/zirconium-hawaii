@@ -3,14 +3,6 @@
 set -eu
 # set -x
 
-# Unset DEFAULT_HOSTNAME
-value_str DEFAULT_HOSTNAME "(none)"
-
-# NOTE: This does not actually enable selinux, it just creates the /sys/fs/selinux directory. Enforcing is still off in this case.
-# Needs this to fix some issues with pre-existing distroboxes from Fedora, as the /sys/fs/selinux directory is not created otherwise.
-remove DEFAULT_SECURITY_DAC
-enable DEFAULT_SECURITY_SELINUX
-
 # Module signing
 remove MODULE_SIG
 remove MODULE_SIG_ALL

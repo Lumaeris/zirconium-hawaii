@@ -16,17 +16,20 @@ sources:
   exclude:
   - "*-rc*"
   ref: v7.2.3-ogc2-0-g5fc47f707b518566b41258942a0a5a7a04d532f7
-- kind: git_repo
-  directory: archlinux-kernel-config
-  url: archlinux_gitlab:archlinux/packaging/packages/linux
-  # FIXME: eventually use our own config instead of pulling Arch Linux's config
-  # manually update this track to the version of the linux kernel that ogc is using
-  track: 7.2.2.arch1-1
-  ref: 7.2.2.arch1-1-0-gb5e50358a428eeb8973ec16fb67284935f36b8e1
+  # FIXME: eventually use our own config instead of pulling Fedora's config
+- kind: remote
+  (?):
+  - arch == "aarch64":
+      url: kojipkgs-fedora:packages/kernel/%{fedora-version}/%{fedora-pkgrelease}/aarch64/kernel-core-%{fedora-version}-%{fedora-pkgrelease}.aarch64.rpm
+      ref: 29e3ff419dc66fc10ca9c7df928e4b0024ac11ce0c8e9d64cb26f0eae8adceba
+  - arch == "x86_64":
+      url: kojipkgs-fedora:packages/kernel/%{fedora-version}/%{fedora-pkgrelease}/x86_64/kernel-core-%{fedora-version}-%{fedora-pkgrelease}.x86_64.rpm
+      ref: d580dd985f3812f85a7ed50611282fe3923aab137701cf5742356c2e5d97b50c
+  filename: fedora-kernel.rpm
 - kind: local
   path: files/linux/config-utils.sh
 - kind: local
-  path: files/linux/gamerslop-config.sh
+  path: files/linux/fedora-config.sh
 
 build-depends:
 - freedesktop-sdk.bst:public-stacks/buildsystem-make.bst
@@ -36,6 +39,7 @@ build-depends:
 - freedesktop-sdk.bst:components/bc.bst
 - freedesktop-sdk.bst:components/git.bst
 - freedesktop-sdk.bst:components/gzip.bst
+- freedesktop-sdk.bst:components/libarchive.bst
 - freedesktop-sdk.bst:components/pahole.bst
 - freedesktop-sdk.bst:components/python3.bst
 - freedesktop-sdk.bst:components/rsync.bst
@@ -64,6 +68,9 @@ variables:
       kernel_arch: riscv
   - arch == "loongarch64":
       kernel_arch: loongarch
+  # manually update this track to the version of the linux kernel that ogc is using
+  fedora-version: 7.2.3
+  fedora-pkgrelease: 300.fc45
 
 environment:
   ARCH: '%{kernel_arch}'
@@ -91,26 +98,25 @@ config:
     echo "$extra_version" > localversion.10-ogc
 
   - |
-    # Don't set CONFIG_DEFAULT_SECURITY, we'll do that ourselves
-    sed -i '/^CONFIG_DEFAULT_SECURITY_/d' ogc-kernel-packages/config/*
-
-  - |
     # put the variables that we need to unset into a file usable by fdSDK's config-utils.sh
-    for f in $(grep -Evh "^[[:blank:]]*#|^[[:blank:]]*$" ogc-kernel-packages/config/{ogc,arch}.config.unset); do
+    for f in $(grep -Evh "^[[:blank:]]*#|^[[:blank:]]*$" ogc-kernel-packages/config/{ogc,fedora}.config.unset); do
       echo remove $f >> ogc-config.sh
     done
 
   - |
-    # merge Arch Linux's default config with ogc's config set
-    cp archlinux-kernel-config/config.x86_64 .config
-    for f in ogc arch; do
+    # get fedora's config set
+    bsdtar --to-stdout -xvf fedora-kernel.rpm 'lib/modules/*/config' > .config
+
+  - |
+    # merge Fedora's default config with ogc's config set
+    for f in ogc fedora; do
       scripts/kconfig/merge_config.sh .config ogc-kernel-packages/config/${f}.config.set
     done
 
   - |
     . ./config-utils.sh
     . ./ogc-config.sh
-    . ./gamerslop-config.sh
+    . ./fedora-config.sh
 
   - |
     make -j1 olddefconfig
@@ -169,6 +175,8 @@ public:
       devel:
         (>):
         - '%{indep-libdir}/modules/*/System.map'
+      debug:
+        (>):
         - '%{indep-libdir}/modules/*/vmlinux'
     overlap-whitelist:
     - "%{project_licensedir}"
