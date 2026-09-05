@@ -7,7 +7,7 @@ sources:
 
 build-depends:
 - freedesktop-sdk.bst:public-stacks/buildsystem-make.bst
-- deps/go-1.26.bst
+- freedesktop-sdk.bst:components/go.bst
 
 depends:
 - freedesktop-sdk.bst:public-stacks/runtime-minimal.bst

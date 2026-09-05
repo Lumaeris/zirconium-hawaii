@@ -13,8 +13,10 @@ sources:
   track: main
   ref: 24fcfd8de17879a5295532068599cf26f749fbd7
 
-depends:
-- freedesktop-sdk.bst:public-stacks/runtime-minimal.bst
+build-depends:
+- freedesktop-sdk.bst:public-stacks/runtime-gnu.bst
+
+runtime-depends:
 - freedesktop-sdk.bst:components/containers-common.bst
 - cli/hyfetch.bst
 - cli/gum.bst

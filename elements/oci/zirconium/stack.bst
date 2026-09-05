@@ -2,7 +2,7 @@ kind: stack
 
 depends:
   - stacks/zirconium.bst
-  - core/linux-fedora.bst
+  - core/linux.bst
   - core/initramfs.bst
 
 public:

@@ -58,7 +58,7 @@ generate-keys $vendor=vendor:
     cp files/boot-keys/linux-module-cert.crt files/boot-keys/modules/linux-module-cert.crt
 
 [ arg ("branch", long="branch", short="b") ]
-generate-image-version branch="25.08":
+generate-image-version branch="26.08":
     #!/usr/bin/env bash
     set -xeu
 

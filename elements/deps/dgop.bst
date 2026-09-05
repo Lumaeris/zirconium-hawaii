@@ -7,14 +7,14 @@ sources:
 
 build-depends:
 - freedesktop-sdk.bst:public-stacks/buildsystem-make.bst
-- deps/go-1.26.bst
+- freedesktop-sdk.bst:components/go.bst
 
-depends:
+runtime-depends:
 - freedesktop-sdk.bst:public-stacks/runtime-minimal.bst
 
 variables:
   version: 1.6.0
-  make-args: build BUILD_TIME=2011-11-10_15:00:00 VERSION=v%{version}
+  make-args: build GOFLAGS="" BUILD_TIME=2011-11-10_15:00:00 VERSION=v%{version}
 
 config:
   install-commands:
