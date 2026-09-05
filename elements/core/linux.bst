@@ -87,19 +87,6 @@ environment-nocache:
 config:
   configure-commands:
   - |
-    # Add the ogc version to the end of the kernel version
-    # If we're on a tagged release, remove .git and set the extra version to the tag.
-    # If you keep .git around, your kernel version will include the git hash at the end, which is ugly.
-    if git describe --tag 2>/dev/null | grep -e '-ogc[0-9]' &>/dev/null; then
-      git_tag="$(git describe --tag)"
-      rm -rf .git
-    else
-      git_tag="ogc"
-    fi
-    extra_version="-${git_tag#*$"-"}"
-    echo "$extra_version" > localversion.10-ogc
-
-  - |
     # put the variables that we need to unset into a file usable by fdSDK's config-utils.sh
     for f in $(grep -Evh "^[[:blank:]]*#|^[[:blank:]]*$" ogc-kernel-packages/config/{ogc,fedora}.config.unset); do
       echo remove $f >> ogc-config.sh
