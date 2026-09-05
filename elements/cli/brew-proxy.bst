@@ -4,7 +4,7 @@ sources:
 - kind: git_repo
   url: codeberg:HastD/brew-proxy
   track: v*
-  ref: v0.3.5-0-gf4851d56d6f8f53da8f5a7e991bb97bcf9e0e186
+  ref: v0.3.6-0-ge6656882ca0ca0b2e64da7b2272e55fea5d7d5b3
 - kind: local
   path: files/brew-proxy/brew-proxy-dropin.conf
 - kind: cargo2
