@@ -4,20 +4,23 @@ description: Linux kernel with patches from OpenGamingCollective applied
 
 sources:
 - kind: git_repo
-  url: github:OpenGamingCollective/linux.git
-  track: "v*-ogc*"
+  url: kernel:linux/kernel/git/stable/linux.git
+  track: v*
   exclude:
-  - "*-rc*"
-  ref: v7.2.3-ogc2-0-g0bb924b042ab85b8f529aed6e4f3e24750584276
+  - '*-rc*'
+  ref: v7.2.3-0-g58e7295cfecaddec94629160386412e0f2b1e8fe
 - kind: patch_queue
   path: patches/linux/fdsdk
+- kind: remote_patch
+  url: github_files:OpenGamingCollective/linux/releases/download/v%{ogc-patchset-version}/monolithic.patch
+  ref: 46f8ce72d5fd1bd15a429b7bae4120d47c3f2b09b263f0a2da2569678262ef67
 - kind: git_repo
   directory: ogc-kernel-packages
   url: github:OpenGamingCollective/kernel-packages.git
   track: "v*-ogc*"
   exclude:
   - "*-rc*"
-  ref: v7.2.3-ogc2-0-g5fc47f707b518566b41258942a0a5a7a04d532f7
+  ref: v7.2.3-ogc3-0-g5fc47f707b518566b41258942a0a5a7a04d532f7
   # FIXME: eventually use our own config instead of pulling Fedora's config
 - kind: remote
   (?):
@@ -39,7 +42,6 @@ build-depends:
 - freedesktop-sdk.bst:components/cpio.bst  # loongarch64 build enabled CONFIG_IKHEADERS by default
 - freedesktop-sdk.bst:components/flex.bst
 - freedesktop-sdk.bst:components/bc.bst
-- freedesktop-sdk.bst:components/git.bst
 - freedesktop-sdk.bst:components/gzip.bst
 - freedesktop-sdk.bst:components/libarchive.bst
 - freedesktop-sdk.bst:components/pahole.bst
@@ -54,6 +56,7 @@ build-depends:
 #   strict: true
 
 variables:
+  ogc-patchset-version: 7.2.3-ogc3
   bootdir: /boot
   kernel_arch: '%{arch}'
   src-arch: '%{kernel_arch}'
@@ -70,7 +73,7 @@ variables:
       kernel_arch: riscv
   - arch == "loongarch64":
       kernel_arch: loongarch
-  # manually update this track to the version of the linux kernel that ogc is using
+  # manually update this track to the version of the linux kernel that we're using
   fedora-version: 7.2.3
   fedora-pkgrelease: 300.fc45
 
