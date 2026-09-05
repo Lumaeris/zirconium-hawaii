@@ -1,4 +1,4 @@
-From 79ee736a2329c9611593f61976f60329a8f368c8 Mon Sep 17 00:00:00 2001
+From dbd407efeee58b45142968c5b099c2af5cf82119 Mon Sep 17 00:00:00 2001
 From: Hec <hec@heccraft.com>
 Date: Thu, 3 Sep 2026 00:33:22 -0400
 Subject: [PATCH 2/4] Downgrade back to GNOME 50
@@ -246,7 +246,7 @@ index 775595e44..5095a27da 100644
  build-depends:
  - (@): include/gcc-for-recc.yml
 diff --git a/elements/core/gnome-desktop.bst b/elements/core/gnome-desktop.bst
-index a2ad9a73d..cf20b2e09 100644
+index 3d3776563..cf20b2e09 100644
 --- a/elements/core/gnome-desktop.bst
 +++ b/elements/core/gnome-desktop.bst
 @@ -2,12 +2,8 @@ kind: meson
@@ -272,7 +272,7 @@ index a2ad9a73d..cf20b2e09 100644
 -config:
 -  configure-commands:
 -    (<):
--    - cp -r subprojects/packagefiles/qrcodegen/* subprojects/qrcodegen
+-    - meson subprojects packagefiles --apply
 diff --git a/elements/core/gnome-initial-setup.bst b/elements/core/gnome-initial-setup.bst
 index aaf00efe4..98def927a 100644
 --- a/elements/core/gnome-initial-setup.bst
@@ -349,7 +349,7 @@ index 7fd89cfa7..991c65a1d 100644
  - (@): include/gcc-for-recc.yml
  - buildsystems/meson.bst
 diff --git a/elements/core/gnome-shell.bst b/elements/core/gnome-shell.bst
-index 1f70cde36..85c98832d 100644
+index 3e0ca1e1b..387973253 100644
 --- a/elements/core/gnome-shell.bst
 +++ b/elements/core/gnome-shell.bst
 @@ -2,16 +2,10 @@ kind: meson
@@ -2205,7 +2205,7 @@ index e44267812..1ffc86334 100644
  - (@): include/gcc-for-recc.yml
  - buildsystems/meson.bst
 diff --git a/elements/core/mutter.bst b/elements/core/mutter.bst
-index f0254824c..a12a6977a 100644
+index 56902abe7..cea7b09e4 100644
 --- a/elements/core/mutter.bst
 +++ b/elements/core/mutter.bst
 @@ -2,12 +2,8 @@ kind: meson

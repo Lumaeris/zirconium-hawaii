@@ -1,4 +1,4 @@
-From 845e246c3d5576234d977b89278ed1d46b19d896 Mon Sep 17 00:00:00 2001
+From 96ba29b689e0994a1d181cb2d7a0c23d162abb9f Mon Sep 17 00:00:00 2001
 From: Hec <hec@heccraft.com>
 Date: Thu, 3 Sep 2026 00:35:13 -0400
 Subject: [PATCH 4/4] Revert "Replace gnome-keyring with oo7"

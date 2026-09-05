@@ -1,4 +1,4 @@
-From 6ff72fe3d10f98858f652b85a152af11713b422c Mon Sep 17 00:00:00 2001
+From e649e87e5c400a622aef1e80f3c125af2efffe74 Mon Sep 17 00:00:00 2001
 From: Hec <hec@heccraft.com>
 Date: Thu, 3 Sep 2026 00:56:46 -0400
 Subject: [PATCH 3/4] Remove git versions of flatpak and xdg-desktop-portal
@@ -9,13 +9,11 @@ Signed-off-by: Hec <hec@heccraft.com>
 ---
  elements/core-deps/flatpak.bst                | 51 ----------------
  .../core-deps/xdg-desktop-portal-base.bst     | 58 -------------------
- .../core-deps/xdg-desktop-portal-manifest.bst |  4 --
  elements/core-deps/xdg-desktop-portal.bst     | 28 ---------
  elements/freedesktop-sdk.bst                  |  5 --
- 5 files changed, 146 deletions(-)
+ 4 files changed, 142 deletions(-)
  delete mode 100644 elements/core-deps/flatpak.bst
  delete mode 100644 elements/core-deps/xdg-desktop-portal-base.bst
- delete mode 100644 elements/core-deps/xdg-desktop-portal-manifest.bst
  delete mode 100644 elements/core-deps/xdg-desktop-portal.bst
 
 diff --git a/elements/core-deps/flatpak.bst b/elements/core-deps/flatpak.bst
@@ -139,16 +137,6 @@ index ca71cb344..000000000
 -  # meson wrap file
 -  # https://github.com/flatpak/xdg-desktop-portal/blob/main/subprojects/gvdb.wrap
 -  ref: c6f2359cc1d00f16e0a0e2527fa0bc1882b8b5ab
-diff --git a/elements/core-deps/xdg-desktop-portal-manifest.bst b/elements/core-deps/xdg-desktop-portal-manifest.bst
-deleted file mode 100644
-index e60b51331..000000000
---- a/elements/core-deps/xdg-desktop-portal-manifest.bst
-+++ /dev/null
-@@ -1,4 +0,0 @@
--kind: collect_manifest
--
--build-depends:
--- freedesktop-sdk.bst:components/xdg-desktop-portal-base.bst
 diff --git a/elements/core-deps/xdg-desktop-portal.bst b/elements/core-deps/xdg-desktop-portal.bst
 deleted file mode 100644
 index 160d84293..000000000
