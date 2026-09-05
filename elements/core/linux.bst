@@ -9,6 +9,8 @@ sources:
   exclude:
   - "*-rc*"
   ref: v7.2.3-ogc2-0-g0bb924b042ab85b8f529aed6e4f3e24750584276
+- kind: patch_queue
+  path: patches/linux/fdsdk
 - kind: git_repo
   directory: ogc-kernel-packages
   url: github:OpenGamingCollective/kernel-packages.git
@@ -128,7 +130,7 @@ config:
     install -Dm644 vmlinux "%{install-root}%{indep-libdir}/modules/${release}/vmlinux"
     install -Dm644 System.map "%{install-root}%{indep-libdir}/modules/${release}/System.map"
     install -Dm644 .config "%{install-root}%{indep-libdir}/modules/${release}/config"
-    ZSTD_CLEVEL=10 make INSTALL_MOD_PATH='%{install-root}%{prefix}' modules_install INSTALL_MOD_STRIP=1
+    ZSTD_CLEVEL=19 make INSTALL_MOD_PATH='%{install-root}%{prefix}' modules_install INSTALL_MOD_STRIP=1
 
   - |
     release=$(make -s kernelrelease)
