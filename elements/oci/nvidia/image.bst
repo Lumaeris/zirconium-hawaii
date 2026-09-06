@@ -53,6 +53,11 @@ config:
       rm /layer/usr/bin/chsh
 
     - |
+      # Remove GDM service directories added by GNOME OS' Nvidia script
+      rm -rf /layer/usr/lib/systemd/system/gdm.service.wants
+      rm -rf /layer/usr/lib/systemd/system/gdm.service.d
+
+    - |
       glib-compile-schemas /layer/usr/share/glib-2.0/schemas
 
     - |
