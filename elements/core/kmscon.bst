@@ -36,6 +36,3 @@ config:
 
     - |
       install -Dm644 greetd-kmscon.conf "%{install-root}%{indep-libdir}/systemd/system/greetd.service.d/kmscon.conf"
-
-    - |
-      install -Dm644 -t "%{install-root}%{sysconfdir}/kmscon" kmscon.conf
