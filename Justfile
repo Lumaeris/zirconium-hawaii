@@ -6,7 +6,7 @@ image_tag := env("BUILD_IMAGE_TAG", "latest")
 base_dir := env("BUILD_BASE_DIR", ".")
 filesystem := env("BUILD_FILESYSTEM", "btrfs")
 vendor := "Zirconium"
-bst_image := env("BST_IMAGE", "registry.gitlab.com/freedesktop-sdk/infrastructure/freedesktop-sdk-docker-images/bst2:188e1f83de7a9cc5c4c2d779942a45b0ec3f093f")
+bst_image := env("BST_IMAGE", "registry.gitlab.com/freedesktop-sdk/infrastructure/freedesktop-sdk-docker-images/bst2:2f09ebe57e18593af0b7a9085230757850f06a9b")
 
 bst *ARGS:
     #!/usr/bin/env bash
