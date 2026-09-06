@@ -74,6 +74,7 @@ depends:
   - gnome-build-meta.bst:gnomeos-deps/zram-generator.bst
 
   - cli/lsb-release.bst
+  - cli/lshw.bst
   - config/polkit/networkmanager-wheel-nopasswd.bst
   - config/sysctl.bst
   - config/systemd/zirconium.bst
