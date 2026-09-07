@@ -19,6 +19,7 @@ bst *ARGS:
         --privileged \
         --device /dev/fuse \
         --network=host \
+        --pids-limit -1 \
         -v "{{base_dir}}":/pwd \
         -v "$HOME/.config/buildstream.conf:/root/.config/buildstream.conf" \
         -v "$HOME/.config/hawaii:/root/.config/hawaii" \
@@ -37,6 +38,7 @@ bst-interactive *ARGS:
         --privileged \
         --device /dev/fuse \
         --network=host \
+        --pids-limit -1 \
         -v "{{base_dir}}":/pwd \
         -v "$HOME/.config/buildstream.conf:/root/.config/buildstream.conf" \
         -v "$HOME/.config/hawaii:/root/.config/hawaii" \
