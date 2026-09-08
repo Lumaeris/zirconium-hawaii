@@ -3,8 +3,8 @@ kind: meson
 sources:
 - kind: git_repo
   url: github:OpenGamingCollective/gamescope.git
-  track: ogc
-  ref: 3.16.19-257-g77e6ea94dbc3feca4b95daef433d6238a9efdd68
+  track: '*.*.*-ogc*'
+  ref: 3.16.28-ogc1-0-g322b73ec76677beae76c74e1b8c94f2be7bb1ffb
 # meson subprojects
 - kind: git_repo
   directory: subprojects/glm
