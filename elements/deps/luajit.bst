@@ -4,7 +4,7 @@ sources:
 - kind: git_repo
   url: github:LuaJIT/LuaJIT.git
   track: v2.1
-  ref: 24c20c94e7db195b640854619577441f9b4bc6be
+  ref: c6ffc141a8762b41703f9287d63d93622a13dd8f
 
 build-depends:
 - freedesktop-sdk.bst:public-stacks/buildsystem-make.bst
