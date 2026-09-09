@@ -1,6 +1,7 @@
 kind: stack
 
 depends:
+  - stacks/zirconium.bst
   - stacks/jackrabbit.bst
   - core/linux.bst
   - core/initramfs.bst
