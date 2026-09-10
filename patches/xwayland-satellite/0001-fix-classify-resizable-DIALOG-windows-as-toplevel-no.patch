@@ -1,7 +1,7 @@
 From 7f848f502b59d680bd0276f41a4302c08ea08208 Mon Sep 17 00:00:00 2001
 From: lildengzi <2580862656@qq.com>
 Date: Tue, 25 Aug 2026 02:23:12 +0800
-Subject: [PATCH] fix: classify resizable DIALOG windows as toplevel, not popup
+Subject: [PATCH 1/2] fix: classify resizable DIALOG windows as toplevel, not popup
 
 A DIALOG with WM_TRANSIENT_FOR and client-side _MOTIF_WM_HINTS
 (decorations=0) was always classified as a popup, ignoring whether it
