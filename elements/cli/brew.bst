@@ -4,7 +4,7 @@ sources:
 - kind: docker
   url: ghcr:ublue-os/brew
   track: latest
-  ref: 0f62b05028dba5b324167379b80a3d1dd1ded8a12d18d9143107abc8a4776436
+  ref: d34d5c3112bbfe7e65713f6331796a2123cffa77ce7aff540adbcfcb9ee4d74d
 
 build-depends:
 - freedesktop-sdk.bst:public-stacks/runtime-gnu.bst

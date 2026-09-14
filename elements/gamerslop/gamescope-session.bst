@@ -10,7 +10,7 @@ sources:
 - kind: git_repo
   url: github:OpenGamingCollective/gamescope-session.git
   track: main
-  ref: 72da8014d5ad98366c257fbcac2ebe888de49797
+  ref: 2f2715ce22cbcb0290f5ea82080796753a455b4b
 
 variables:
   strip-binaries: ""
