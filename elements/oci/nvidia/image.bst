@@ -53,6 +53,10 @@ config:
       rm /layer/usr/bin/chsh
 
     - |
+      # pam_securetty breaks root login with kmscon
+      sed -i '/pam_securetty.so/d' /layer/etc/pam.d/* /layer/usr/lib/pam.d/*
+
+    - |
       # Remove GDM service directories added by GNOME OS' Nvidia script
       rm -rf /layer/usr/lib/systemd/system/gdm.service.wants
       rm -rf /layer/usr/lib/systemd/system/gdm.service.d
