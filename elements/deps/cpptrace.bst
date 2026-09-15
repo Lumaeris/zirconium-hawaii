@@ -8,7 +8,6 @@ sources:
 
 build-depends:
 - freedesktop-sdk.bst:public-stacks/buildsystem-cmake.bst
-- freedesktop-sdk.bst:components/pkg-config.bst
 
 depends:
 - freedesktop-sdk.bst:components/zstd.bst

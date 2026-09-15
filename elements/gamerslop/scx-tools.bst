@@ -1148,14 +1148,11 @@ sources:
     version: 4.2.0
     sha: bad0294361a320b694a328460dc73add56c306150f5cb6bfafc44446120008a3
 build-depends:
-- freedesktop-sdk.bst:public-stacks/runtime-gnu.bst
+- freedesktop-sdk.bst:public-stacks/buildsystem-rust.bst
 - freedesktop-sdk.bst:components/bpf-maybe.bst
 - freedesktop-sdk.bst:components/findutils.bst
-- freedesktop-sdk.bst:components/gcc.bst
 - freedesktop-sdk.bst:components/libseccomp.bst
 - freedesktop-sdk.bst:components/python3.bst
-- freedesktop-sdk.bst:components/rust.bst
-- freedesktop-sdk.bst:components/stripper.bst
 - freedesktop-sdk.bst:components/systemd.bst
 
 depends:

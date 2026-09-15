@@ -11,7 +11,6 @@ sources:
 build-depends:
 - freedesktop-sdk.bst:public-stacks/buildsystem-autotools.bst
 - freedesktop-sdk.bst:components/pkg-config.bst
-- freedesktop-sdk.bst:components/gcc.bst
 
 depends:
 - freedesktop-sdk.bst:components/jansson.bst

@@ -852,11 +852,8 @@ sources:
     version: 3.5.0
     sha: 90cb9383f9b45290407a1258b202d3f8f01db719eb60b4e4055c6375af4fc7c7
 build-depends:
-- freedesktop-sdk.bst:public-stacks/runtime-gnu.bst
+- freedesktop-sdk.bst:public-stacks/buildsystem-rust.bst
 - freedesktop-sdk.bst:components/pkg-config.bst
-- freedesktop-sdk.bst:components/stripper.bst
-- freedesktop-sdk.bst:components/rust.bst
-- freedesktop-sdk.bst:components/gcc.bst
 
 depends:
 - freedesktop-sdk.bst:components/gdk-pixbuf.bst

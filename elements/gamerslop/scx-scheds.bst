@@ -3221,7 +3221,6 @@ build-depends:
 - freedesktop-sdk.bst:public-stacks/buildsystem-meson.bst
 - freedesktop-sdk.bst:components/bpf-maybe.bst
 - freedesktop-sdk.bst:components/findutils.bst
-- freedesktop-sdk.bst:components/gcc.bst
 - freedesktop-sdk.bst:components/make.bst
 - freedesktop-sdk.bst:components/python3.bst
 - freedesktop-sdk.bst:components/rust.bst
