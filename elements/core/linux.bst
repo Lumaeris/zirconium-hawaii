@@ -13,23 +13,23 @@ sources:
   path: patches/linux/fdsdk
 - kind: remote_patch
   url: github_files:OpenGamingCollective/linux/releases/download/v%{ogc-patchset-version}/monolithic.patch
-  ref: 46f8ce72d5fd1bd15a429b7bae4120d47c3f2b09b263f0a2da2569678262ef67
+  ref: c6e3ba1663c9ac3877245fabcb0befd860912a881af4d4f786d17be7f3436772
 - kind: git_repo
   directory: ogc-kernel-packages
   url: github:OpenGamingCollective/kernel-packages.git
   track: "v*-ogc*"
   exclude:
   - "*-rc*"
-  ref: v7.2.3-ogc3-0-g5fc47f707b518566b41258942a0a5a7a04d532f7
+  ref: v7.2.4-ogc3-0-g77a6bd4369a4f1d61872a31ff1c56ebdd01e1bc9
   # FIXME: eventually use our own config instead of pulling Fedora's config
 - kind: remote
   (?):
   - arch == "aarch64":
       url: kojipkgs-fedora:packages/kernel/%{fedora-version}/%{fedora-pkgrelease}/aarch64/kernel-core-%{fedora-version}-%{fedora-pkgrelease}.aarch64.rpm
-      ref: 29e3ff419dc66fc10ca9c7df928e4b0024ac11ce0c8e9d64cb26f0eae8adceba
+      ref: 07e50292ac198179f5a2d4eff4817cf3a2578c7b56bfca11303865f36f9d6e1b
   - arch == "x86_64":
       url: kojipkgs-fedora:packages/kernel/%{fedora-version}/%{fedora-pkgrelease}/x86_64/kernel-core-%{fedora-version}-%{fedora-pkgrelease}.x86_64.rpm
-      ref: d580dd985f3812f85a7ed50611282fe3923aab137701cf5742356c2e5d97b50c
+      ref: c58f7934d2e001c5d1d41f3c4277c7ac1a806cb61982cdf7cd6e07074867db50
   filename: fedora-kernel.rpm
 - kind: local
   path: files/linux/config-utils.sh
@@ -56,7 +56,7 @@ build-depends:
 #   strict: true
 
 variables:
-  ogc-patchset-version: 7.2.3-ogc3
+  ogc-patchset-version: 7.2.4-ogc3
   bootdir: /boot
   kernel_arch: '%{arch}'
   src-arch: '%{kernel_arch}'
@@ -74,7 +74,7 @@ variables:
   - arch == "loongarch64":
       kernel_arch: loongarch
   # manually update this track to the version of the linux kernel that we're using
-  fedora-version: 7.2.3
+  fedora-version: 7.2.4
   fedora-pkgrelease: 300.fc45
 
 environment:
