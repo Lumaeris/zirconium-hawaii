@@ -54,10 +54,6 @@ config:
     # not the Flatpak runtime, as its easy to bundle when needed.
     components/zenity.bst: gnome-build-meta.bst:void/zenity.bst
 
-    # Telling Buildstream to use OGC kernel. Needed to build
-    # NVIDIA drivers
-    components/linux.bst: core/linux.bst
-
     components/linux-module-cert.bst: core/linux-module-cert.bst
     components/_private/systemd-base.bst: gnome-build-meta.bst:core-deps/systemd-base.bst
     components/systemd.bst: gnome-build-meta.bst:core-deps/systemd.bst
@@ -67,5 +63,8 @@ config:
     # gnome-calendar still requires libical 3.x. Nothing in the flatpak runtimes depends
     # on it, so this can be reverted in a stable branch
     components/libical.bst: gnome-build-meta.bst:core-deps/libical3.bst
+
+    # Tell Buildstream to use our kernel. Needed to build NVIDIA drivers from GNOME
+    components/linux.bst: core/linux.bst
 
     components/bash-config.bst: config/bash-config.bst
