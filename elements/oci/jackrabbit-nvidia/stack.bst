@@ -37,6 +37,8 @@ public:
       - ln -s var/opt /opt
       - ln -s var/mnt /mnt
       - ln -s var/srv /srv
-      - ln -s ../../var/usrlocal usr/local
+      - ln -s ../var/usrlocal usr/local
 
       - echo 'uninitialized' > /etc/machine-id
+
+      - echo 'import "/usr/share/zirconium/just/67-gamerslop.just"' >> /usr/share/zirconium/just/00-start.just
