@@ -18,8 +18,8 @@ github.com/AvengeMedia/dankgo/wayland/client
 github.com/AvengeMedia/dankgo/wayland/ext_data_control
 github.com/AvengeMedia/dankgo/wayland/xdg_shell
 github.com/AvengeMedia/dankgo/wlclipboard
-# github.com/AvengeMedia/dgop v0.2.4-0.20260819141338-085d828cf577
-## explicit; go 1.26
+# github.com/AvengeMedia/dgop v1.6.1-0.20260916132520-8a12dbc6e287
+## explicit; go 1.26.0
 github.com/AvengeMedia/dgop/gops
 github.com/AvengeMedia/dgop/models
 # github.com/Microsoft/go-winio v0.6.2
@@ -94,7 +94,7 @@ github.com/charmbracelet/lipgloss
 # github.com/charmbracelet/log v1.0.0
 ## explicit; go 1.21
 github.com/charmbracelet/log
-# github.com/charmbracelet/x/ansi v0.11.7
+# github.com/charmbracelet/x/ansi v0.11.8
 ## explicit; go 1.24.2
 github.com/charmbracelet/x/ansi
 github.com/charmbracelet/x/ansi/parser
@@ -138,9 +138,6 @@ github.com/danielgtaylor/huma/v2/casing
 github.com/danielgtaylor/huma/v2/negotiation
 github.com/danielgtaylor/huma/v2/validation
 github.com/danielgtaylor/huma/v2/yaml
-# github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc
-## explicit
-github.com/davecgh/go-spew/spew
 # github.com/dblohm7/wingoes v0.0.0-20260526185140-fb298caac7ca
 ## explicit; go 1.25.0
 github.com/dblohm7/wingoes
@@ -351,9 +348,6 @@ github.com/pjbgf/sha1cd/ubc
 # github.com/pkg/errors v0.9.1
 ## explicit
 github.com/pkg/errors
-# github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2
-## explicit
-github.com/pmezard/go-difflib/difflib
 # github.com/power-devops/perfstat v0.0.0-20260805114148-88456608a4f6
 ## explicit; go 1.14
 github.com/power-devops/perfstat
@@ -399,10 +393,12 @@ github.com/spf13/pflag
 # github.com/stretchr/objx v0.5.3
 ## explicit; go 1.20
 github.com/stretchr/objx
-# github.com/stretchr/testify v1.11.1
+# github.com/stretchr/testify v1.12.1
 ## explicit; go 1.17
 github.com/stretchr/testify/assert
 github.com/stretchr/testify/assert/yaml
+github.com/stretchr/testify/internal/difflib
+github.com/stretchr/testify/internal/spew
 github.com/stretchr/testify/mock
 github.com/stretchr/testify/require
 # github.com/tailscale/go-winio v0.0.0-20231025203758-c4f33415bf55
@@ -421,7 +417,7 @@ github.com/tklauser/numcpus
 # github.com/x448/float16 v0.8.4
 ## explicit; go 1.11
 github.com/x448/float16
-# github.com/xo/terminfo v0.0.0-20220910002029-abceb7e1c41e
+# github.com/xo/terminfo v1.0.0
 ## explicit; go 1.19
 github.com/xo/terminfo
 # github.com/yeqown/go-qrcode/v2 v2.2.5
@@ -455,6 +451,9 @@ go.etcd.io/bbolt
 go.etcd.io/bbolt/errors
 go.etcd.io/bbolt/internal/common
 go.etcd.io/bbolt/internal/freelist
+# go.yaml.in/yaml/v3 v3.0.5
+## explicit; go 1.16
+go.yaml.in/yaml/v3
 # go4.org/mem v0.0.0-20240501181205-ae6ca9944745
 ## explicit; go 1.14
 go4.org/mem
@@ -483,8 +482,8 @@ golang.org/x/crypto/ssh
 golang.org/x/crypto/ssh/agent
 golang.org/x/crypto/ssh/internal/bcrypt_pbkdf
 golang.org/x/crypto/ssh/knownhosts
-# golang.org/x/exp v0.0.0-20260727155853-b88d891fe743
-## explicit; go 1.25.0
+# golang.org/x/exp v0.0.0-20260824195058-e88cd73687aa
+## explicit; go 1.26.0
 golang.org/x/exp/constraints
 golang.org/x/exp/maps
 golang.org/x/exp/slices
@@ -524,7 +523,7 @@ golang.org/x/sys/windows
 golang.org/x/sys/windows/registry
 golang.org/x/sys/windows/svc
 golang.org/x/sys/windows/svc/mgr
-# golang.org/x/text v0.40.0
+# golang.org/x/text v0.41.0
 ## explicit; go 1.25.0
 golang.org/x/text/cases
 golang.org/x/text/internal
