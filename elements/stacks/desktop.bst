@@ -17,6 +17,7 @@ depends:
   - config/satty.bst
   - config/default-icons/adwaita.bst
   - config/ld-config.bst
+  - config/plymouth.bst
   - desktop/input-remapper.bst
   - freedesktop-sdk.bst:components/desktop-file-utils.bst
   - freedesktop-sdk.bst:components/xwayland.bst
