@@ -30,7 +30,6 @@ config:
       PRETTY_NAME="${NAME}"
       VERSION="${VERSION}"
       VERSION_ID="${VERSION}"
-      BASE_OS_NAME="Freedesktop SDK ${VERSION}"
       ID="${ID}"
       ID_LIKE="org.freedesktop.platform"
       VERSION_CODENAME="${CODENAME}"
