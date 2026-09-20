@@ -4,16 +4,13 @@ description: Linux kernel with patches from OpenGamingCollective applied
 
 sources:
 - kind: git_repo
-  url: kernel:linux/kernel/git/stable/linux.git
-  track: v*
+  url: github:OpenGamingCollective/linux.git
+  track: "v*-ogc*"
   exclude:
   - '*-rc*'
-  ref: v7.2.4-0-g5015d0d945b3d3f2b038d2667880d5762f7d9437
+  ref: v7.2.4-ogc3-0-g86a9082d0ab73d902aeb899b2912fae8b24bb181
 - kind: patch_queue
   path: patches/linux/fdsdk
-- kind: remote_patch
-  url: github_files:OpenGamingCollective/linux/releases/download/v%{ogc-patchset-version}/monolithic.patch
-  ref: c6e3ba1663c9ac3877245fabcb0befd860912a881af4d4f786d17be7f3436772
 - kind: git_repo
   directory: ogc-kernel-packages
   url: github:OpenGamingCollective/kernel-packages.git
@@ -21,7 +18,7 @@ sources:
   exclude:
   - "*-rc*"
   ref: v7.2.4-ogc3-0-g77a6bd4369a4f1d61872a31ff1c56ebdd01e1bc9
-  # FIXME: eventually use our own config instead of pulling Fedora's config
+  # FIXME: eventually use FDSDK's config + our own instead of pulling Fedora's config
 - kind: remote
   (?):
   - arch == "aarch64":
@@ -42,6 +39,7 @@ build-depends:
 - freedesktop-sdk.bst:components/cpio.bst  # loongarch64 build enabled CONFIG_IKHEADERS by default
 - freedesktop-sdk.bst:components/flex.bst
 - freedesktop-sdk.bst:components/bc.bst
+- freedesktop-sdk.bst:components/git.bst
 - freedesktop-sdk.bst:components/gzip.bst
 - freedesktop-sdk.bst:components/libarchive.bst
 - freedesktop-sdk.bst:components/pahole.bst
@@ -56,7 +54,6 @@ build-depends:
 #   strict: true
 
 variables:
-  ogc-patchset-version: 7.2.4-ogc3
   bootdir: /boot
   kernel_arch: '%{arch}'
   src-arch: '%{kernel_arch}'
@@ -74,6 +71,7 @@ variables:
   - arch == "loongarch64":
       kernel_arch: loongarch
   # manually update this track to the version of the linux kernel that we're using
+  # this determines what config is pulled from Fedora
   fedora-version: 7.2.4
   fedora-pkgrelease: 300.fc45
 
@@ -89,6 +87,19 @@ environment-nocache:
 
 config:
   configure-commands:
+  - |
+    # Add the ogc version to the end of the kernel version
+    # If we're on a tagged release, remove .git and set the extra version to the tag.
+    # If you keep .git around, your kernel version will include the git hash at the end, which is ugly.
+    if git describe --tag --exact-match 2>/dev/null; then
+      git_tag="$(git describe --tag)"
+      rm -rf .git
+    else
+      git_tag="ogc"
+    fi
+    extra_version="-${git_tag#*$"-"}"
+    echo "$extra_version" > localversion.10-ogc
+
   - |
     # put the variables that we need to unset into a file usable by fdSDK's config-utils.sh
     for f in $(grep -Evh "^[[:blank:]]*#|^[[:blank:]]*$" ogc-kernel-packages/config/{ogc,fedora}.config.unset); do
