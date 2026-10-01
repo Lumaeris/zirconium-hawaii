@@ -3,13 +3,13 @@ kind: cmake
 sources:
 - kind: git_repo
   url: qt:qtshadertools.git
-  track: v6.*.*
+  # track: v6.*.*
   exclude:
   - "*-beta*"
   - "*-rc*"
   - "*-alpha*"
   - "*-lts*"
-  ref: v6.12.0-0-gbccd516b990a6396900051470ac86cc27a7042ea
+  ref: v6.11.2-0-gc70b59ea4a47ccbee7e0d0353b9e91d719120bfd
 
 build-depends:
 - freedesktop-sdk.bst:public-stacks/buildsystem-cmake.bst

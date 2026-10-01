@@ -3,13 +3,13 @@ kind: cmake
 sources:
 - kind: git_repo
   url: qt:qtwayland.git
-  track: v6.*.*
+  # track: v6.*.*
   exclude:
   - "*-beta*"
   - "*-rc*"
   - "*-alpha*"
   - "*-lts*"
-  ref: v6.12.0-0-gc4f85cd060e3e80a7d71829defac9cf5a40e8ffa
+  ref: v6.11.2-0-gfd0456558bc1766da85aee42f6a87f79092cbb13
 
 build-depends:
 - freedesktop-sdk.bst:public-stacks/buildsystem-cmake.bst
