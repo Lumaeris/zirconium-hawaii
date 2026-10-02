@@ -8,7 +8,7 @@ sources:
   track: "v*-ogc*"
   exclude:
   - '*-rc*'
-  ref: v7.2.7-ogc1-0-g9d4c67fe35ce63b7b94603b4253fa040992d64b3
+  ref: v7.2.8-ogc1-0-gf90d862923d8254f6df4b7ea81df68eef6d3a45e
 - kind: patch_queue
   path: patches/linux/fdsdk
 - kind: git_repo
@@ -17,16 +17,16 @@ sources:
   track: "v*-ogc*"
   exclude:
   - "*-rc*"
-  ref: v7.2.7-ogc1-0-g3afb54c9ede4bb3f1b0f40e1b068a0c4197f2ac1
+  ref: v7.2.8-ogc1-0-g3afb54c9ede4bb3f1b0f40e1b068a0c4197f2ac1
   # FIXME: eventually use FDSDK's config + our own instead of pulling Fedora's config
 - kind: remote
   (?):
   - arch == "aarch64":
       url: kojipkgs-fedora:packages/kernel/%{fedora-version}/%{fedora-pkgrelease}/aarch64/kernel-core-%{fedora-version}-%{fedora-pkgrelease}.aarch64.rpm
-      ref: 91e24d566d22fa1b97757dd883b318abc8d2829a0dc161e33d3f20470f82bcf4
+      ref: c82dd5fcc7e7fa5f6604c4d9dec4ef5a134374e7504cdc08ce4fef11efbc1d75
   - arch == "x86_64":
       url: kojipkgs-fedora:packages/kernel/%{fedora-version}/%{fedora-pkgrelease}/x86_64/kernel-core-%{fedora-version}-%{fedora-pkgrelease}.x86_64.rpm
-      ref: 0714f4afff383017f82da3f68c597518738c7c7abdeaf55c0ecdba052c146187
+      ref: c9888729119f111ebe8f328ced4a56c4f54d7c5f6aa606bdd880d6d509cec1eb
   filename: fedora-kernel.rpm
 - kind: local
   path: files/linux/config-utils.sh
@@ -72,7 +72,7 @@ variables:
       kernel_arch: loongarch
   # manually update this track to the version of the linux kernel that we're using
   # this determines what config is pulled from Fedora
-  fedora-version: 7.2.7
+  fedora-version: 7.2.8
   fedora-pkgrelease: 300.fc45
 
 environment:
