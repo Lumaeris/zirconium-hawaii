@@ -8,7 +8,7 @@ sources:
   track: "v*-ogc*"
   exclude:
   - '*-rc*'
-  ref: v7.2.8-ogc1-0-gf90d862923d8254f6df4b7ea81df68eef6d3a45e
+  ref: v7.2.8-ogc5-0-g05131e17273c5c31b61b79362930112e2c925d64
 - kind: patch_queue
   path: patches/linux/fdsdk
 - kind: git_repo
@@ -17,7 +17,7 @@ sources:
   track: "v*-ogc*"
   exclude:
   - "*-rc*"
-  ref: v7.2.8-ogc1-0-g3afb54c9ede4bb3f1b0f40e1b068a0c4197f2ac1
+  ref: v7.2.8-ogc5-0-g170127c4226d4cc7747b4a4e07167cdb6ea7166b
   # FIXME: eventually use FDSDK's config + our own instead of pulling Fedora's config
 - kind: remote
   (?):
