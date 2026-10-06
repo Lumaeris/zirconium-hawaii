@@ -1,0 +1,26 @@
+From 6b57d6d0bc5714ef5e8da1592ed2ca80c04a32b7 Mon Sep 17 00:00:00 2001
+From: Hec <hec@heccraft.com>
+Date: Tue, 6 Oct 2026 13:43:06 -0400
+Subject: [PATCH] Update libtsm to 4.8.0
+
+Needed to upgrade kmscon
+---
+ elements/gnomeos-deps/libtsm.bst | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/elements/gnomeos-deps/libtsm.bst b/elements/gnomeos-deps/libtsm.bst
+index a9979f7a0..65395eb04 100644
+--- a/elements/gnomeos-deps/libtsm.bst
++++ b/elements/gnomeos-deps/libtsm.bst
+@@ -4,7 +4,7 @@ sources:
+ - kind: git_repo
+   url: github:kmscon/libtsm.git
+   track: 'v*'
+-  ref: v4.7.1-0-gef0a1a40c30d164913f413c47de5bbd8383a6daa
++  ref: v4.8.0-0-gef2365d0f9f1a370d721a82470d69c3646fe97f0
+ 
+ build-depends:
+ - (@): include/gcc-for-recc.yml
+-- 
+2.55.0
+
