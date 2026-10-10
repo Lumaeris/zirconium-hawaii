@@ -276,7 +276,7 @@ jobs:
         run: |
           set -x
 
-          BUILD_ARGS=("--squash-all")
+          BUILD_ARGS=()
 
           while IFS= read -r label; do
             BUILD_ARGS+=("--label" "$label")
