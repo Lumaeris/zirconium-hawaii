@@ -17,7 +17,7 @@ build-depends:
 
 depends:
 - freedesktop-sdk.bst:components/python3.bst
-- deps/python3-six.bst
+- freedesktop-sdk-extra.bst:components/python3-six.bst
 
 config:
   build-commands:
