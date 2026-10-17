@@ -31,13 +31,13 @@ build-depends:
 - freedesktop-sdk.bst:components/xz.bst
 
 runtime-depends:
-- gnome-build-meta.bst:core-deps/systemd.bst
-- gnome-build-meta.bst:core-deps/upower.bst
 - freedesktop-sdk.bst:components/dbus.bst
 - freedesktop-sdk.bst:components/hwdata.bst
 - freedesktop-sdk.bst:components/libdrm.bst
 - freedesktop-sdk.bst:components/sqlite.bst
+- freedesktop-sdk.bst:components/systemd.bst
 - freedesktop-sdk.bst:components/xorg-lib-xcb.bst
+- gnome-build-meta.bst:core-deps/upower.bst
 
 config:
   install-commands:
