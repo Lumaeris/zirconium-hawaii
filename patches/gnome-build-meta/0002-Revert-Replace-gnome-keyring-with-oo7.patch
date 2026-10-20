@@ -1,7 +1,7 @@
 From e8bfc204e192b0e01e084cc63993144694012a62 Mon Sep 17 00:00:00 2001
 From: Hec <hec@heccraft.com>
 Date: Thu, 3 Sep 2026 00:35:13 -0400
-Subject: [PATCH 2/3] Revert "Replace gnome-keyring with oo7"
+Subject: [PATCH 2/4] Revert "Replace gnome-keyring with oo7"
 
 This reverts commit 528af16d740c830045312774be441b0bb8205076.
 ---

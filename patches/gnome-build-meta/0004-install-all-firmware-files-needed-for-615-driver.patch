@@ -1,0 +1,25 @@
+From 6088c4246ab3024d8dc2fb2f015d218551525fdf Mon Sep 17 00:00:00 2001
+From: John Adams <jadams@protonmail.com>
+Date: Sun, 18 Oct 2026 09:52:19 -0400
+Subject: [PATCH 4/4] install all firmware files (needed for 615 driver)
+
+---
+ elements/gnomeos-deps/nvidia-drivers.bst | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/elements/gnomeos-deps/nvidia-drivers.bst b/elements/gnomeos-deps/nvidia-drivers.bst
+index f651b9a02..909022682 100644
+--- a/elements/gnomeos-deps/nvidia-drivers.bst
++++ b/elements/gnomeos-deps/nvidia-drivers.bst
+@@ -297,7 +297,7 @@ config:
+     # This assumes that the README format doesn't change, probably not the best detection method, but better than hardcoding the version
+     driver_version=$(cat README.txt | grep "Driver Version" | awk 'BEGIN {FS=": "}; {print $2};')
+ 
+-    install -Dm644 -t "%{install-root}%{indep-libdir}/firmware/nvidia/${driver_version}/" firmware/gsp_*.bin
++    install -Dm644 -t "%{install-root}%{indep-libdir}/firmware/nvidia/${driver_version}/" firmware/*.bin
+ 
+   # so symlinks
+   - |
+-- 
+2.56.0
+
