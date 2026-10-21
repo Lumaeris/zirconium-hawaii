@@ -15,8 +15,8 @@ sources:
   - arch == "x86_64":
       url: github_files:twpayne/chezmoi/releases/download/v{version}/chezmoi_{version}_linux_amd64.apk
       ref:
-        version: 2.73.2
-        sha256sum: 90607bbce423458ffb336d1ef821cd60f73016bc5df4938290293cf41605e845
+        version: 2.73.3
+        sha256sum: 498a02768696a1e803df6fe613c7d0b83953c23423ed7ba3d5458ebd8392333a
 build-depends:
 - freedesktop-sdk.bst:public-stacks/runtime-gnu.bst
 
