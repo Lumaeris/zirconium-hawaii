@@ -6,20 +6,20 @@ sandbox:
 
 # go modules are loaded here
 (@):
-- elements/include/dms-shell.yml
+- elements/include/dux-shell.yml
 
 sources:
   (>):
   - kind: git_repo
-    url: github:AvengeMedia/DankMaterialShell.git
+    url: github:duxlabs-dev/dux-shell.git
     track: 'v*.*.*'
-    ref: v1.6.3-0-g4a87e8227daf0840b3376fd5e7f891f5900165a6
+    ref: v2.0.0-0-g9b413296b16721f7679fb62e624cb1ed2433fa58
   - kind: git_module
-    url: github:AvengeMedia/dank-qml-common
-    path: dank-qml-common
-    ref: 1ae722232da7110d26cd2c355b6615e078e94197
+    url: github:duxlabs-dev/dux-qml-common
+    path: dux-qml-common
+    ref: ebf5e6c002da1bdaa4aaa2f319fea7b8507abc42
   - kind: local
-    path: files/dms-shell
+    path: files/dux-shell
 
 build-depends:
 - freedesktop-sdk.bst:public-stacks/buildsystem-make.bst
@@ -36,7 +36,7 @@ runtime-depends:
 - deps/dgop.bst
 - deps/kimageformats.bst
 - desktop/brightnessctl.bst
-- desktop/danksearch.bst
+- desktop/dux-search.bst
 - desktop/ddcutil.bst
 - desktop/matugen.bst
 - freedesktop-sdk.bst:components/libnotify.bst

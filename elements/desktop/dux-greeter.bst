@@ -6,20 +6,20 @@ sandbox:
 
 # go modules are loaded here
 (@):
-- elements/include/dms-greeter.yml
+- elements/include/dux-greeter.yml
 
 sources:
   (>):
   - kind: git_repo
-    url: github:AvengeMedia/dank-greeter.git
+    url: github:duxlabs-dev/dux-greeter.git
     track: 'v*.*.*'
-    ref: v1.6.2-0-g0175be5c2084e2c5027324403a329e04040cd0bc
+    ref: v2.0.0-0-g0044526f90b584916548f0a17dbf31764a6db530
   - kind: git_module
-    url: github:AvengeMedia/dank-qml-common
-    path: dank-qml-common
-    ref: 26396ce432d6c71c3f5367438f96f4a8d667e160
+    url: github:duxlabs-dev/dux-qml-common
+    path: dux-qml-common
+    ref: ebf5e6c002da1bdaa4aaa2f319fea7b8507abc42
   - kind: local
-    path: files/dms-greeter
+    path: files/dux-greeter
 
 build-depends:
 - freedesktop-sdk.bst:public-stacks/buildsystem-make.bst
