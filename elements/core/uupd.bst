@@ -5,7 +5,7 @@ sources:
 - kind: git_repo
   url: github:ublue-os/uupd.git
   track: v*
-  ref: v1.5.1-0-g9ebf7e1cb94deca3fe4cc76ef542dbc1c6190eaa
+  ref: v1.5.2-0-g0d86e221c494b25b718ce786a99b31cbcf2f6afd
 
 build-depends:
 - freedesktop-sdk.bst:public-stacks/buildsystem-make.bst
