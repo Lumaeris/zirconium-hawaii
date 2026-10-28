@@ -53,7 +53,7 @@ config:
     install -Dm0644 mkosi.extra/usr/share/factory/etc/kmscon/kmscon.conf -t "%{install-root}%{sysconfdir}/kmscon"
     install -Dm0644 mkosi.extra/usr/share/xdg-terminal-exec/xdg-terminals.list -t "%{install-root}%{datadir}/xdg-terminal-exec"
     install -Dm0644 policy.json -t "%{install-root}%{datadir}/containers"
-    install -Dm0644 mkosi.profiles/zirconium-bootc-ostree/mkosi.extra/usr/share/factory/etc/containers/registries.d/zirconium-dev.yaml -t "%{install-root}%{datadir}/containers/registries.d"
+    install -Dm0644 mkosi.profiles/zirconium-bootc-ostree/mkosi.extra/usr/share/containers/registries.d/zirconium-dev.yaml -t "%{install-root}%{datadir}/containers/registries.d"
 
     # pam stuff
     install -Dm0644 mkosi.extra/usr/share/greetd/greetd-spawn.pam_env.conf -t "%{install-root}%{datadir}/greetd"
