@@ -6,6 +6,8 @@ sources:
   url: github:ublue-os/uupd.git
   track: v*
   ref: v1.5.2-0-g0d86e221c494b25b718ce786a99b31cbcf2f6afd
+- kind: patch
+  path: patches/uupd/0001-fix-use-sh-wrapper-so-a-symlinked-env-can-t-break-br.patch
 
 build-depends:
 - freedesktop-sdk.bst:public-stacks/buildsystem-make.bst
